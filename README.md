@@ -29,10 +29,11 @@ requests==2.31.0
 '''
 
 
-Run the app
-Terminal
-### vanilla terminal
-streamlit run app.py
+## Deployment and run the app
+To run this project/Application go root folder and run
+```bash
+  streamlit run app.py
+```
 
 Get to Know Me & Stay Connected
 
