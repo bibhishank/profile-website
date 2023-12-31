@@ -15,9 +15,7 @@ repository here: [https://github.com/divanov11/Digital-Resume](https://github.co
 👉 [https://bkaradkar.net](https://bkaradkar.net)
 
 ## Screenshots
-
 <img width="1607" alt="image" src="https://github.com/bibhishank/profile-website/assets/45320951/7bf5d968-90e2-4820-bb64-453403e75740">
-
 
 
 ### Requirements
