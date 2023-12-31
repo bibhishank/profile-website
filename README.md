@@ -1,12 +1,10 @@
 # Profile Website 
 
-
-
 # Build A Digital Resume Using Python & Streamlit
 
-### Developed a personal summary website utilizing Python and Streamlit, deployed it on an AWS EC2 instance, and linked it to my domain. This project's code is reusable, enabling the creation of personalized profile websites.
-### Feel free to use this template and adjust it to your needs & linking.
-### The website features projects from my exploration of new technologies, particularly in Generative AI, created with the utilization of the OpenAI API and Google's Bard Gemini API.
+#### Developed a personal summary website utilizing Python and Streamlit, deployed it on an AWS EC2 instance, and linked it to my domain. This project's code is reusable, enabling the creation of personalized profile websites.
+#### Feel free to use this template and adjust it to your needs & linking.
+#### The website features projects from my exploration of new technologies, particularly in Generative AI, created with the utilization of the OpenAI API and Google's Bard Gemini API.
 
 
 💡 The website design is inspired by [@Sven-Bo](https://github.com/Sven-Bo) 💡 
@@ -24,6 +22,13 @@ repository here: [https://github.com/divanov11/Digital-Resume](https://github.co
 
 
 ### Requirements
+streamlit==1.29.0
+streamlit-lottie==0.0.5
+streamlit-option-menu==0.3.6
+pathlib==1.0.1
+Pillow==10.0.1
+requests==2.31.0
+
 
 
 Run the app
