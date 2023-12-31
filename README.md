@@ -25,19 +25,10 @@ repository here: [https://github.com/divanov11/Digital-Resume](https://github.co
 
 ### Requirements
 
-streamlit_lottie==0.0.2
-streamlit==1.3.0
-requests==2.24.0
-Pillow==8.4.0
-protobuf~=3.19.0
-watchdog==2.1.8
-
 
 Run the app
-
 Terminal
-
-# vanilla terminal
+### vanilla terminal
 streamlit run app.py
 
 Get to Know Me & Stay Connected
