@@ -2,11 +2,9 @@
 
 # Build A Digital Resume Using Python & Streamlit
 
-## Developed a personal summary website utilizing Python and Streamlit, deployed it on an AWS EC2 instance, and linked it to my domain. This project's code is reusable, enabling the creation of personalized profile websites.
-
+### Developed a personal summary website utilizing Python and Streamlit, deployed it on an AWS EC2 instance, and linked it to my domain. This project's code is reusable, enabling the creation of personalized profile websites.
 ### Feel free to use this template and adjust it to your needs & linking.
-
-## The website features projects from my exploration of new technologies, particularly in Generative AI, created with the utilization of the OpenAI API and Google's Bard Gemini API.
+### The website features projects from my exploration of new technologies, particularly in Generative AI, created with the utilization of the OpenAI API and Google's Bard Gemini API.
 
 
 💡 The website design is inspired by [@Sven-Bo](https://github.com/Sven-Bo) 💡 
