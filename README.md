@@ -22,7 +22,7 @@ repository here: [https://github.com/divanov11/Digital-Resume](https://github.co
 
 
 ### Requirements
-streamlit==1.29.0
+streamlit==1.29.0 \n
 
 streamlit-lottie==0.0.5
 
