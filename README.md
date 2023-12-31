@@ -14,7 +14,7 @@ Find his:
 
 repository here: [https://github.com/divanov11/Digital-Resume](https://github.com/bibhishank/profile-website)
 
-👉 [(https://bkaradkar.net](https://bkaradkar.net)
+👉 [https://bkaradkar.net](https://bkaradkar.net)
 
 ## Screenshots
 
@@ -23,7 +23,7 @@ repository here: [https://github.com/divanov11/Digital-Resume](https://github.co
 
 
 
-Requirements
+### Requirements
 
 streamlit_lottie==0.0.2
 streamlit==1.3.0
