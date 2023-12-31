@@ -23,14 +23,15 @@ repository here: [https://github.com/divanov11/Digital-Resume](https://github.co
 
 
 
-## Requirements
+Requirements
 
-Install the dependencies with pip
+streamlit_lottie==0.0.2
+streamlit==1.3.0
+requests==2.24.0
+Pillow==8.4.0
+protobuf~=3.19.0
+watchdog==2.1.8
 
-streamlit==1.29.0
-streamlit-lottie==0.0.5
-streamlit-option-menu==0.3.6
-Pillow==10.0.1
 
 Run the app
 
