@@ -10,7 +10,7 @@
 💡 The website design is inspired by [@Sven-Bo](https://github.com/Sven-Bo) 💡 
 Find his:
 
-repository here: [https://github.com/divanov11/Digital-Resume](https://github.com/bibhishank/profile-website)
+repository here: [https://github.com/bibhishank/profile-website](https://github.com/bibhishank/profile-website)
 
 👉 [https://bkaradkar.net](https://bkaradkar.net)
 
