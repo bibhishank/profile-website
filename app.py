@@ -8,14 +8,13 @@ from streamlit_lottie import st_lottie
 import google.generativeai as genai
 
 
-
 #Google libraries
 import pathlib
 import textwrap
 import google.generativeai as genai
 
 # Used to securely store your API key
-from google.colab import userdata
+#from google.colab import userdata
 from IPython.display import display
 from IPython.display import Markdown
 
@@ -424,6 +423,7 @@ if selected == "Generative A.I. and Data Projects":
                 st.write("")
             with colbutton2:
                 submitted = st.form_submit_button(label="Generate MCQ's")
+
 
 
         #st.write("##")
