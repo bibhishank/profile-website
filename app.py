@@ -363,6 +363,7 @@ if selected == 'About':
             st.subheader("Certified Scrum Master (SCM)")
 
 
+
 #scrum_alliance_logo
 #aws_logo
 #google_logo
@@ -423,6 +424,59 @@ if selected == "Generative A.I. and Data Projects":
                 st.write("")
             with colbutton2:
                 submitted = st.form_submit_button(label="Generate MCQ's")
+
+        #Validation of all the fields
+        if submitted:
+            #initiate_vars()
+            if uploaded_file is not None and mcq_count and subject and tone:        
+                file_text = read_file(uploaded_file)
+                if file_text == "MORE_THAN_FIVE_PAGES":
+                    st.write("PDF file contains more than 5 pages, please upload file with 5 or less pages")
+                elif file_text == "LESS_TEXT_IN_PDF":
+                    st.write("File has not enough content to generate MCQ, please reupload file with enough content")
+                elif file_text == "LESS_TEXT_IN_TXT":
+                    st.write("File has not enough content to generate MCQ, please reupload file with enough content")
+                elif file_text == "MORE_TEXT_IN_TXT":
+                    st.write("File is too large, please reduce text size and reupload file.") 
+                else:
+                    #st.write("Conditions are satisfied, calling OpenAI")
+                    mcq_output = getMCQData(file_text, mcq_count, subject, tone)
+                    st.write("Here is quiz  :point_down: ")
+                    #st.write(mcq_output)
+                    #print(mcq_output)
+                    #st.write(type(mcq_output))
+                    #output_json = json.loads(json.dumps(mcq_output))
+                    
+                    quiz_table_data = []
+                    tmp_dump = ast.literal_eval(mcq_output)
+                    #st.write(tmp_dump)
+                    json_dump = json.dumps(tmp_dump)
+                    #st.write(tmp_dump)
+                    json_obj = json.loads(json_dump)
+                    #st.write(json_obj)
+                    for key, value in json_obj.items():
+                        mcq = value["mcq"]
+                        #st.write(mcq)
+                        options = " | ".join(
+                        [
+                            f"{option}: {option_value}"
+                            for option, option_value in value["options"].items()
+                        ]
+                        )
+                        correct = value["correct"]
+                        quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct})
+                        
+                    
+                    st.write(pd.DataFrame(quiz_table_data))
+        
+        
+                    #st.write(number_of_pages , len(file_text), text_length_char, text_length_char_txt)
+                    #st.write(file_text , mcq_count , subject, tone)
+                #st.write(number_of_pages, len(file_text), text_length_char, text_length_char_txt , file_text)
+            else:
+                st.write("Please provide all the values")
+        
+        
 
 
 
