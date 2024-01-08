@@ -5,6 +5,32 @@ from PIL import Image
 from streamlit_option_menu import option_menu
 import requests
 from streamlit_lottie import st_lottie
+import google.generativeai as genai
+
+
+
+#Google libraries
+import pathlib
+import textwrap
+import google.generativeai as genai
+
+# Used to securely store your API key
+from google.colab import userdata
+from IPython.display import display
+from IPython.display import Markdown
+
+import PyPDF2
+import pandas as pd
+import json
+import ast
+from MCQGenerator import getMCQData 
+
+
+number_of_pages = 0
+text_length_char = 0
+text_length_char_txt = 0
+all_page_text = ""
+
 
 def load_lottieurl(url):
     r = requests.get(url)
@@ -13,6 +39,36 @@ def load_lottieurl(url):
     return r.json()
         
  
+def read_file(file):
+    if file.name.endswith(".pdf"):
+        try:
+            pdf_reader = PyPDF2.PdfReader(file)
+            text = ""
+            global number_of_pages
+            number_of_pages = len(pdf_reader.pages)
+            if number_of_pages > 5:
+                return "MORE_THAN_FIVE_PAGES"
+            for page in pdf_reader.pages:
+                text+= page.extract_text()
+            global text_length_char
+            text_length_char = len(text)
+            if text_length_char < 500:
+                return "LESS_TEXT_IN_TXT"
+            if text_length_char > 8000:
+                return "MORE_TEXT_IN_TXT"
+            return text
+        except Exception as e:
+            raise Exception ("error reading the PDF file")
+
+    elif file.name.endswith(".txt"):
+        text_file_text = file.read().decode("utf-8")
+        global text_length_char_txt
+        text_length_char_txt =  len(text_file_text) 
+        return text_file_text
+    else:
+        raise Exception(
+            "unsupported file format only pdf and text file suppoted")
+    
 
 # --- PATH SETTINGS ---
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
@@ -155,7 +211,7 @@ if selected == 'About':
             st.write("Sep 2021 – PRESENT")
 
         
-        expander = st.expander(" **Projects** ")
+        expander = st.expander(" Project Details ")
         
         with expander:
             st.write(" ### :large_green_circle: Free user monetization projects: ### ")
@@ -176,7 +232,7 @@ if selected == 'About':
             st.write(" - ► Participated in discussions for Exploratory Data Analysis (EDA) and Feature Engineering, utilizing the k-means algorithm with the Elbow method to identify potential customer segments: Champions, Dormant, and At Risk.")
             st.write(" - ► Socialized segment data with product teams, making predictive data accessible on web and client platforms for targeted customer engagement.")
             
-              
+    st.write('\n\n\n\n')              
 
 # --- Cisco Zensar experiwnce    
     with st.container(border=True):
@@ -204,7 +260,8 @@ if selected == 'About':
             #st.markdown("<h1 style='text-align: center'>SSep 2021 – PRESENT</h1>", unsafe_allow_html=True)
             st.write("May 2014 – Sep 2021")
 
-        expander = st.expander(" **Projects** ")
+        expander = st.expander(" Project Details ")
+        
         
         with expander:
             #st.write(" ### :large_green_circle: Free user monetization projects: ### ")
@@ -218,6 +275,8 @@ if selected == 'About':
             st.write("  ####  :arrow_right: Learning Management System, Content Management System (TeamSIte) migration to new enterprise platform #### ")
             st.write(" - ► Led communication and coordination for integrated application teams at Cisco, developing the next-gen UI for the Enterprise Learning site, configuring the Sales Enablement Reach Media platform, and contributing to a multilingual mobile app for partners. Key involvement in enterprise-level application platform migrations..")
 
+    st.write('\n\n\n\n')              
+    
 # --- ZOOM experiwnce prioer to 2014
     with st.container(border=True):
         col1, col2 = st.columns([7,3])
@@ -326,29 +385,63 @@ if selected == 'About':
         edu_col1, edu_col2 = st.columns([1,18])
         with edu_col1:
             pune_university_logo_pic = Image.open(pune_university_logo)
-            st.image(pune_university_logo_pic,width=60)
+            st.image(pune_university_logo_pic,width=45)
         with edu_col2:
-            st.subheader("Master of Computer Management (MCM) - Savitribai Phule Pune University")
+            st.write("Master of Computer Management (MCM) - Savitribai Phule Pune University")
         cert_col1, cert_col2 = st.columns([1,18])
         with edu_col1:
             #aws_logo_pic = Image.open(aws_logo)
-            st.image(pune_university_logo_pic,width=60)
+            st.image(pune_university_logo_pic,width=45)
         with edu_col2:
-            st.subheader("Diploma in Computer Management (DCM) - Savitribai Phule Pune University")                          
+            st.write('\n')
+            st.write("Diploma in Computer Management (DCM) - Savitribai Phule Pune University")                          
                          
 
 if selected == "Generative A.I. and Data Projects":
     with st.container():
         st.subheader("Projects worked on to learn latest technologies like Generative AI")
-        st.write("##")
-        col5, col6 = st.columns((1,2))
-        with col5:
-            st.image(genAI_image)
-        with col6:
-            st.subheader("Generative A.I. projects ")
-            st.markdown("[Visit Github page](https://github.com/bibhishank)")
+        
+        #Create a form using st.form 
+        form = st.form ("Basic form")
+        
+        with form:
+            col1, col2, col3, col4  =  st.columns([4, 1, 1, 2])
+            with col1:
+                #uploaded_file = form.file_uploader("upload .txt or .pdf file")
+                uploaded_file = st.file_uploader("Upload .pdf or .txt")
+            with col2:
+                #mcq_count = form.number_input("No, of MCQs", min_value = 1 , max_value = 5)
+                #mcq_count = st.number_input("No, of MCQs", min_value = 1 , max_value = 3)
+                mcq_count = st.number_input("No, of MCQs", 1 , 3)
+            with col3:
+                subject = st.text_input("Subject", max_chars =20)
+            with col4:
+                #tone = st.text_input("Complexity", max_chars=20, placeholder="Simple")
+                tone = st.selectbox('Complexity',('Simple', 'Medium', 'Complex'))
+            #with col5:
+            colbutton1, colbutton2 =  st.columns([1, 1])
+            with colbutton1:
+                st.write("")
+            with colbutton2:
+                submitted = st.form_submit_button(label="Generate MCQ's")
+
+
+        #st.write("##")
+        #col5, col6 = st.columns((1,2))
+        #with col5:
+        #    st.image(genAI_image)
+        #with col6:
+        #    st.subheader("Generative A.I. projects ")
+        #    st.markdown("[Visit Github page](https://github.com/bibhishank)")
             
-            st.markdown("[![Title](https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg)](https://github.com/bibhishank)")
+        #    st.markdown("[![Title](https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg)](https://github.com/bibhishank)")
+    #with st.container():
+        # Or use `os.getenv('GOOGLE_API_KEY')` to fetch an environment variable.
+        #GOOGLE_API_KEY=userdata.get('GOOGLE_API_KEY')
+        #genai.configure(api_key=GOOGLE_API_KEY)
+        
+        
+    
             
 if selected == "Contact me":
     st.subheader("Reach out to me")
