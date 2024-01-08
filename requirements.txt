@@ -4,7 +4,7 @@ streamlit-option-menu==0.3.6
 pathlib==1.0.1
 Pillow==10.0.1
 requests==2.31.0
-google-generativeai=0.3.2
+google-generativeai==0.3.2
 openai
 langchain
 python-dotenv
