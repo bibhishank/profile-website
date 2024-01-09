@@ -6,7 +6,7 @@ from langchain.chains import LLMChain
 from langchain.llms import OpenAI
 
 
-key = "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"
+key = "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"
 
 llm = OpenAI(openai_api_key=key, temperature=0.9)
 
