@@ -23,6 +23,7 @@ import pandas as pd
 import json
 import ast
 from MCQGenerator import getMCQData 
+from BlogGenerator import getBLOGLLamaresponse
 
 
 number_of_pages = 0
@@ -123,7 +124,7 @@ PROJECTS = {
 }
 
 
-st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON, layout= "wide")
+st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON, layout= "wide",menu_items=None)
 
 
 # --- LOAD CSS, PDF & PROFIL PIC ---
@@ -399,7 +400,16 @@ if selected == 'About':
 
 if selected == "Generative A.I. and Data Projects":
     with st.container():
-        st.subheader("Projects worked on to learn latest technologies like Generative AI")
+        #st.subheader("Projects worked on to learn latest technologies like Generative AI")
+        st.markdown(" **Engaged in projects aimed at acquiring proficiency in cutting-edge technologies such as Generative AI.** ")
+        st.write("   :blue[ **1) Generate Multiple choice quiz from given file content or text** ]  ")  
+        multi = ''' :blue[ **Technologies and Tools:** ] OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.  
+        :blue[ **How it works:** ] Upload a .pdf or .txt file from MCQ quiz is to be generated, provide number of questions, Subject and complexity level like Simple Medium Complex. Download .csv file.
+        '''
+        st.markdown(multi)
+        #st.markdown(" **1) Generate Multiple choice quiz from given file content or text** ")
+        #st.markdown(" **Technologies and Tools:** OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront")
+        #st.markdown(" **How it works:** Upload a .pdf or .txt file from MCQ quiz is to be generated, provide *umber questions, Subject and complexity level like Simple Medium Complex. Download .csv file")
         
         #Create a form using st.form 
         form = st.form ("Basic form")
@@ -421,61 +431,106 @@ if selected == "Generative A.I. and Data Projects":
             #with col5:
             colbutton1, colbutton2 =  st.columns([1, 1])
             with colbutton1:
-                st.write("")
+                #st.write("")
+                mcq_txt = st.text_area(
+                    label = "If file is not uploaded add text to generate MCQ",
+                    height = 200,
+                    max_chars = 4000 ,
+                    placeholder = "Text to generate MCQ"
+                    )
             with colbutton2:
+                st.write("")
+                st.write("")
+                st.write("")
                 submitted = st.form_submit_button(label="Generate MCQ's")
+
+
+                
 
         #Validation of all the fields
         if submitted:
             #initiate_vars()
             if uploaded_file is not None and mcq_count and subject and tone:        
-                file_text = read_file(uploaded_file)
-                if file_text == "MORE_THAN_FIVE_PAGES":
-                    st.write("PDF file contains more than 5 pages, please upload file with 5 or less pages")
-                elif file_text == "LESS_TEXT_IN_PDF":
-                    st.write("File has not enough content to generate MCQ, please reupload file with enough content")
-                elif file_text == "LESS_TEXT_IN_TXT":
-                    st.write("File has not enough content to generate MCQ, please reupload file with enough content")
-                elif file_text == "MORE_TEXT_IN_TXT":
-                    st.write("File is too large, please reduce text size and reupload file.") 
-                else:
-                    #st.write("Conditions are satisfied, calling OpenAI")
-                    mcq_output = getMCQData(file_text, mcq_count, subject, tone)
-                    st.write("Here is quiz  :point_down: ")
-                    #st.write(mcq_output)
-                    #print(mcq_output)
-                    #st.write(type(mcq_output))
-                    #output_json = json.loads(json.dumps(mcq_output))
-                    
-                    quiz_table_data = []
-                    tmp_dump = ast.literal_eval(mcq_output)
-                    #st.write(tmp_dump)
-                    json_dump = json.dumps(tmp_dump)
-                    #st.write(tmp_dump)
-                    json_obj = json.loads(json_dump)
-                    #st.write(json_obj)
-                    for key, value in json_obj.items():
-                        mcq = value["mcq"]
-                        #st.write(mcq)
-                        options = " | ".join(
-                        [
-                            f"{option}: {option_value}"
-                            for option, option_value in value["options"].items()
-                        ]
-                        )
-                        correct = value["correct"]
-                        quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct})
-                        
-                    
-                    st.write(pd.DataFrame(quiz_table_data))
-        
-        
-                    #st.write(number_of_pages , len(file_text), text_length_char, text_length_char_txt)
-                    #st.write(file_text , mcq_count , subject, tone)
-                #st.write(number_of_pages, len(file_text), text_length_char, text_length_char_txt , file_text)
+                    file_text = read_file(uploaded_file)
+                    if file_text == "MORE_THAN_FIVE_PAGES":
+                        st.write("PDF file contains more than 5 pages, please upload file with 5 or less pages")
+                    elif file_text == "LESS_TEXT_IN_PDF":
+                        st.write("File has not enough content to generate MCQ, please reupload file with enough content")
+                    elif file_text == "LESS_TEXT_IN_TXT":
+                        st.write("File has not enough content to generate MCQ, please reupload file with enough content")
+                    elif file_text == "MORE_TEXT_IN_TXT":
+                        st.write("File is too large, please reduce text size and reupload file.") 
+                    else:
+                        #st.write("Conditions are satisfied, calling OpenAI")
+                        mcq_output = getMCQData(file_text, mcq_count, subject, tone)
+                        st.write("Here is quiz  :point_down: ")
+                        #st.write(mcq_output)
+                        #print(mcq_output)
+                        quiz_table_data = []
+                        tmp_dump = ast.literal_eval(mcq_output)
+                        #st.write(tmp_dump)
+                        json_dump = json.dumps(tmp_dump)
+                        #st.write(tmp_dump)
+                        json_obj = json.loads(json_dump)
+                        #st.write(json_obj)
+                        for key, value in json_obj.items():
+                            mcq = value["mcq"]
+                            #st.write(mcq)
+                            options = " | ".join(
+                            [
+                                f"{option}: {option_value}"
+                                for option, option_value in value["options"].items()
+                            ]
+                            )
+                            correct = value["correct"]
+                            quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct})
+                            
+                        st.write(pd.DataFrame(quiz_table_data))
+
             else:
                 st.write("Please provide all the values")
         
+    with st.container():
+        #st.subheader("Projects worked on to learn latest technologies like Generative AI")
+        #st.markdown(" **Engaged in projects aimed at acquiring proficiency in cutting-edge technologies such as Generative AI.** ")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.divider()
+        st.write("  :blue[ **2) Generate blog for given subject or profession** ]  ")  
+        multi = ''' :blue[ **Technologies and Tools:** ] OpenAI LLM, LLAMA, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.  
+        :blue[ **How it works:** ] Provide blog Topic, lengt of the Blog and for what profession user want to create a blog .
+        '''
+        st.markdown(multi)
+        #st.markdown(" **1) Generate Multiple choice quiz from given file content or text** ")
+        #st.markdown(" **Technologies and Tools:** OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront")
+        #st.markdown(" **How it works:** Upload a .pdf or .txt file from MCQ quiz is to be generated, provide *umber questions, Subject and complexity level like Simple Medium Complex. Download .csv file")
+        
+        #Create a form using st.form 
+        form1 = st.form("Blog form")        
+        
+        with form1:
+            ## creating to more columns for additonal 2 fields
+            input_text=st.text_input("Enter the Blog Topic")
+            col1,col2=st.columns([5,5])
+            with col1:
+                no_words=st.text_input('No of Words')
+            with col2:
+                blog_style=st.selectbox('Writing the blog for',
+                                    ('Researchers','Data Scientist','Common People', 'Teachers', 'Economists'),index=0)
+            form1_submit=st.form_submit_button(" Generate a Blog")
+        
+        if form1_submit:
+            if input_text and no_words and blog_style:
+                #st.write("Conditions are satisfied, calling OpenAI")
+                print(input_text,no_words,blog_style)
+                blog_response = getBLOGLLamaresponse(input_text,no_words,blog_style)
+                st.subheader(input_text)
+                st.write(blog_response)
+                
+            else:
+                st.write("Please provide all the values")
+
         
 
 
