@@ -108,7 +108,6 @@ Data analysis: Here, data scientists conduct an exploratory data analysis to exa
 Communicate: Finally, insights are presented as reports and other data visualizations that make the insights—and their impact on business—easier for business analysts and other decision-makers to understand. A data science programming language such as R or Python includes components for generating visualizations; alternately, data scientists can use dedicated visualization tools.
 """
 
-key = "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"
 llm = OpenAI(openai_api_key=key, temperature=0.9)
 
 def getMCQData(mcq_input_data, mcq_number, mcq_subject, mcq_tone):
