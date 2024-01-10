@@ -1,37 +1,39 @@
 import requests
+import json
+import os
 
-def fetch_photo(query):
-    api_key = 'YOUR_API_KEY' 
 
-    url = 'https://api.pexels.com/v1/search'
-    headers = {
-        'Authorization': api_key,
-    }
-
-    params = {
-        'query': query,
-        'per_page': 1,
-    }
-
-    response = requests.get(url, headers=headers, params=params)
-
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        data = response.json()
-        photos = data.get('photos', [])
-        if photos:
-            src_original_url = photos[0]['src']['original']
-            return src_original_url
-        else:
-            print("No photos found for the given query.")
-    else:
-        print(f"Error: {response.status_code}, {response.text}")
+def getBlogImage(blog_subject):
+    # Replace with your OpenAI API key
+    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     
-    return None
+    # Define the API endpoint and request payload
+    api_url = 'https://api.openai.com/v1/images/generations'
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {OPENAI_API_KEY}'
+    }
+    data = {
+        "model": "dall-e-3",
+        "prompt": blog_subject,
+        "n": 1,
+        "size": "1024x1024"
+    }
+    
+    # Make the API request
+    response = requests.post(api_url, headers=headers, data=json.dumps(data))
+    
+    # Check if the request was successful
+    if response.status_code == 200:
+        image_url = response.json()
+        #print("Generated image URL:", image_url['data'][0]['url'])
+        return image_url['data'][0]['url']
+    else:
+        print("Error:", response.status_code, response.text)
+        return "IMAGE_ERROR"
 
-# Example usage of the function
-query = 'AI'
-src_original_url = fetch_photo(query)
-if src_original_url:
-    print(f"Original URL for query '{query}': {src_original_url}")
+
+generated_url = getBlogImage("Data Science")
+print("URL=" + generated_url )
+
 

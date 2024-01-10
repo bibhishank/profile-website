@@ -5,7 +5,10 @@ from langchain.llms import CTransformers
 from langchain.chains import LLMChain
 from langchain.llms import OpenAI
 from dotenv import load_dotenv
+import requests
+import json
 import os
+
 
 load_dotenv()
 key = os.getenv("OPENAI_API_KEY")
@@ -25,6 +28,7 @@ def getBLOGLLamaresponse(input_text,no_words,blog_style):
     result = llm(formated_prompt)
     #print(type(result))
     return result
+
 
 
 # def load_llm(max_tokens, prompt_template):

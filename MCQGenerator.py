@@ -6,10 +6,6 @@ from langchain_community.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-# from langchain.chains import SequentialChain
-# #from langchain.callbacks import get_openai_callback
-# from langchain_community.callbacks import get_openai_callback
-# from langchain_community.llms import OpenAI
 
 from langchain import HuggingFaceHub 
 from dotenv import load_dotenv

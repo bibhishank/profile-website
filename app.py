@@ -13,10 +13,6 @@ import pathlib
 import textwrap
 import google.generativeai as genai
 
-# Used to securely store your API key
-#from google.colab import userdata
-#from IPython.display import display
-#from IPython.display import Markdown
 
 import PyPDF2
 import pandas as pd
@@ -24,6 +20,7 @@ import json
 import ast
 from MCQGenerator import getMCQData 
 from BlogGenerator import getBLOGLLamaresponse
+from GetPexelsImage import getBlogImage
 
 
 number_of_pages = 0
@@ -498,7 +495,7 @@ if selected == "Generative A.I. and Data Projects":
         st.write("")
         st.divider()
         st.write("  :blue[ **2) Generate blog for given subject or profession** ]  ")  
-        multi = ''' :blue[ **Technologies and Tools:** ] OpenAI LLM, LLAMA, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.  
+        multi = ''' :blue[ **Technologies and Tools:** ] OpenAI LLM, LLAMA, DALL-E-3,LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.  
         :blue[ **How it works:** ] Provide blog Topic, lengt of the Blog and for what profession user want to create a blog .
         '''
         st.markdown(multi)
@@ -525,7 +522,20 @@ if selected == "Generative A.I. and Data Projects":
                 #st.write("Conditions are satisfied, calling OpenAI")
                 print(input_text,no_words,blog_style)
                 blog_response = getBLOGLLamaresponse(input_text,no_words,blog_style)
-                st.subheader(input_text)
+                blog_image_url = getBlogImage(input_text)
+
+                blog_col1,blog_col2=st.columns([5,5])
+                with blog_col1:
+                    st.write("")
+                    st.write("")
+                    st.subheader(input_text)
+                with blog_col2:
+                    if blog_image_url:
+                        #blog_image = Image.open(blog_image_url)
+                        st.image(blog_image_url, width=500)
+                    else:
+                        st.write("")
+                
                 st.write(blog_response)
                 
             else:
