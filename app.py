@@ -66,6 +66,31 @@ def read_file(file):
         raise Exception(
             "unsupported file format only pdf and text file suppoted")
     
+def getQuize(file_text, mcq_count, subject, tone):
+    mcq_output = getMCQData(file_text, mcq_count, subject, tone)
+    st.write("Here is quiz  :point_down: ")
+    #print(mcq_output)
+    quiz_table_data = []
+    tmp_dump = ast.literal_eval(mcq_output)
+    #st.write(tmp_dump)
+    json_dump = json.dumps(tmp_dump)
+    #st.write(tmp_dump)
+    json_obj = json.loads(json_dump)
+    #st.write(json_obj)
+    for key, value in json_obj.items():
+        mcq = value["mcq"]
+        #st.write(mcq)
+        options = " | ".join(
+        [
+            f"{option}: {option_value}"
+            for option, option_value in value["options"].items()
+        ]
+        )
+        correct = value["correct"]
+        quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct})
+        
+    st.write(pd.DataFrame(quiz_table_data))
+    
 
 # --- PATH SETTINGS ---
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
@@ -442,12 +467,18 @@ if selected == "Generative A.I. and Data Projects":
                 submitted = st.form_submit_button(label="Generate MCQ's")
 
 
-                
-
         #Validation of all the fields
         if submitted:
             #initiate_vars()
-            if uploaded_file is not None and mcq_count and subject and tone:        
+            if (uploaded_file is not None or mcq_txt) and mcq_count and subject and tone:        
+            #if uploaded_file is not None and mcq_count and subject and tone:
+                if len(mcq_txt) >= 500:
+                    file_text = mcq_txt
+                    getQuize(file_text, mcq_count, subject, tone)
+                    #st.write("Text size is too short to generate quize, add more content or upload file.")    
+                elif uploaded_file is None and len(mcq_txt) < 500:
+                    st.write("Text size is too short to generate quize, add more content or upload file.")    
+                elif uploaded_file is not None and (len(mcq_txt) < 500 or mcq_txt is None):
                     file_text = read_file(uploaded_file)
                     if file_text == "MORE_THAN_FIVE_PAGES":
                         st.write("PDF file contains more than 5 pages, please upload file with 5 or less pages")
@@ -458,35 +489,15 @@ if selected == "Generative A.I. and Data Projects":
                     elif file_text == "MORE_TEXT_IN_TXT":
                         st.write("File is too large, please reduce text size and reupload file.") 
                     else:
+                        getQuize(file_text, mcq_count, subject, tone)
                         #st.write("Conditions are satisfied, calling OpenAI")
-                        mcq_output = getMCQData(file_text, mcq_count, subject, tone)
-                        st.write("Here is quiz  :point_down: ")
-                        #st.write(mcq_output)
-                        #print(mcq_output)
-                        quiz_table_data = []
-                        tmp_dump = ast.literal_eval(mcq_output)
-                        #st.write(tmp_dump)
-                        json_dump = json.dumps(tmp_dump)
-                        #st.write(tmp_dump)
-                        json_obj = json.loads(json_dump)
-                        #st.write(json_obj)
-                        for key, value in json_obj.items():
-                            mcq = value["mcq"]
-                            #st.write(mcq)
-                            options = " | ".join(
-                            [
-                                f"{option}: {option_value}"
-                                for option, option_value in value["options"].items()
-                            ]
-                            )
-                            correct = value["correct"]
-                            quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct})
-                            
-                        st.write(pd.DataFrame(quiz_table_data))
+                else:
+                    st.write("Text size is too short to generate quize, add more content or upload file.")
 
             else:
                 st.write("Please provide all the values")
-        
+
+#====Second project of Blog generation        
     with st.container():
         #st.subheader("Projects worked on to learn latest technologies like Generative AI")
         #st.markdown(" **Engaged in projects aimed at acquiring proficiency in cutting-edge technologies such as Generative AI.** ")
