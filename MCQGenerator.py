@@ -14,6 +14,10 @@ from langchain.chains import LLMChain
 from langchain import HuggingFaceHub 
 from dotenv import load_dotenv
 
+load_dotenv()
+key = os.getenv("OPENAI_API_KEY")
+
+
 #load_dotenv() # Reads variables from .env file
 #key = os.getenv("OPENAI_API_KEY")
 
