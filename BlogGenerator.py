@@ -5,14 +5,10 @@ from langchain.llms import CTransformers
 from langchain.chains import LLMChain
 from langchain.llms import OpenAI
 from dotenv import load_dotenv
-
+import os
 
 load_dotenv()
-
-
-#key = "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"
-
-
+key = os.getenv("OPENAI_API_KEY")
 
 
 llm = OpenAI(openai_api_key=key, temperature=0.9)
