@@ -127,7 +127,7 @@ PAGE_ICON = ":large_green_circle:"    # :wave:"    #:technologist"
 NAME = "Bibhishan Karadkar"
 ROLE = "Technical Project Manager"
 DESCRIPTION = """
-Experienced software leader adept at driving business results through collaborative leadership, guiding high-performing global teams in lean Agile, DevOps, and Big Data projects for transformative success over 9 years.
+Experienced Sr. technical project manager with a proven track record of delivering business value. Skilled in working collaboratively with multiple teams like  engineering, product, infrastructure, data. Successfully  implemented multiple cross-functional programs over the past 9+ years highlighting a consistent ability to lead and execute initiatives that involve coordination across various departments.
 """
 EMAIL = "bibhishan_k@yahoo.com"
 SOCIAL_MEDIA = {
