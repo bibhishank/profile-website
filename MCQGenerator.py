@@ -15,44 +15,12 @@ load_dotenv()
 key = os.getenv("OPENAI_API_KEY")
 
 
-#load_dotenv() # Reads variables from .env file
-#key = os.getenv("OPENAI_API_KEY")
-
-#======Sime OpenAI call (working)=========================================
-#key = "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"
-#Working fine
-# llm = OpenAI(openai_api_key=key, temperature=0.9)
-# text = 'What is the capital of India'
-# print(llm.predict(text))
-#======Sime OpenAI call (working) =========================================
-
-
-#==== Hugging face test (working)  =========================================
-# hf_key = "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"
-# #HUGGINGFACEHUB_API_TOKEN
-# llm_huggingface = HuggingFaceHub(huggingfacehub_api_token="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", repo_id="google/flan-t5-base" , model_kwargs={"temperature": 0, "max_length":64} )
-# output = llm_huggingface.predict("can you tell me the capital of Japan")
-# print("\nAnswer: " + output)
-#==== Hugging face test (working )  =========================================
-
-#Prompt template with Chain examples (working )  =========================================
-# key = "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"
-# llm = OpenAI(openai_api_key=key, temperature=0.9)
-# prompt_template = PromptTemplate(input_variables=['country'],
-# template = "Tell me the capital of {country}")
-# prompt_template.format(country="India")
-# chain=LLMChain(llm=llm, prompt=prompt_template)
-# print(chain.run("Sri Lanka"))
-#Prompt template examples (working )  =========================================
-
-#Prompt template  project examples (working )  =========================================
-
 template = """
 Text:{text}
 You are an expert MCQ maker. Given the above text, it is your job to \
 create a quiz  of {number} multiple choice questions for {subject} students in {tone} tone. 
 Make sure the questions are not repeated and check all the questions to be conforming the text as well.
-Make sure to format your response like  RESPONSE_JSON below  and use it as a guide. \
+Make sure to format your response like valid RESPONSE_JSON below  and use it as a guide. \
 Ensure to make {number} MCQs
 ### RESPONSE_JSON
 {response_json}
@@ -116,6 +84,3 @@ def getMCQData(mcq_input_data, mcq_number, mcq_subject, mcq_tone):
     #print(type(result))
     return result
 
-#Prompt template chain project examples (working )  =========================================
-  #quiz_chain = LLMChain(llm=llm, prompt= quiz_generation_prompt, output_key="generated_quiz", verbose=True)
-#Prompt template chain project examples (working )  =========================================

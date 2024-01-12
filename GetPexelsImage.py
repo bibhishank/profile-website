@@ -33,7 +33,7 @@ def getBlogImage(blog_subject):
         return "IMAGE_ERROR"
 
 
-generated_url = getBlogImage("Data Science")
-print("URL=" + generated_url )
+#generated_url = getBlogImage("Data Science")
+#print("URL=" + generated_url )
 
 

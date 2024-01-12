@@ -108,6 +108,7 @@ google_logo= current_dir / "assets" / "google_logo.png"
 pune_university_logo= current_dir / "assets" / "pune_university_logo.png"
 github_logo = current_dir / "assets" / "github_logo.png"
 linkedin_logo = current_dir / "assets" / "linkedIn_logo.png"
+web_logo =  current_dir / "assets" / "web.png"
 
 
 lottie_coder = load_lottieurl("https://lottie.host/def90568-8eae-4ed5-8eb5-3970f81d6894/8jPhbSZYhY.json")   
@@ -125,7 +126,7 @@ genAI_image = Image.open(architecture_image)
 PAGE_TITLE = "About | Bibhishan Karadkar"
 PAGE_ICON = ":large_green_circle:"    # :wave:"    #:technologist"
 NAME = "Bibhishan Karadkar"
-ROLE = "Technical Project Manager"
+ROLE = "Sr. Technical Project Manager"
 DESCRIPTION = """
 Experienced Sr. technical project manager with a proven track record of delivering business value. Skilled in working collaboratively with multiple teams like  engineering, product, infrastructure, data. Successfully  implemented multiple cross-functional programs over the past 9+ years highlighting a consistent ability to lead and execute initiatives that involve coordination across various departments.
 """
@@ -139,14 +140,22 @@ SOCIAL_MEDIA = {
 
 
 PROJECTS = {
-    "🏆 Sales Dashboard - Comparing sales across three stores": "https://youtu.be/Sb0A9i6d320",
-    "🏆 Income and Expense Tracker - Web app with NoSQL database": "https://youtu.be/3egaMfE9388",
-    "🏆 Desktop Application - Excel2CSV converter with user settings & menubar": "https://youtu.be/LzCfNanQ_9c",
-    "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
 }
 
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON, layout= "wide",menu_items=None)
+st.markdown("""
+<style>
+    #MainMenu, header, footer {visibility: hidden;}
+
+    /* This code gets the first element on the sidebar,
+    and overrides its default styling */
+    section[data-testid="stSidebar"] div:first-child {
+        top: 0;
+        height: 100vh;
+    }
+</style>
+""",unsafe_allow_html=True)
 
 
 # --- LOAD CSS, PDF & PROFIL PIC ---
@@ -166,7 +175,11 @@ profile_pic = Image.open(profile_pic)
 # --- profile SECTION ---
 col1, col2 = st.columns(2, gap="small")
 with col1:
-    st.image(profile_pic, width=230)
+    left_co, cent_co,last_co = st.columns(3)
+    with cent_co:
+        st.image(profile_pic, width=230)
+    
+    #st.image(profile_pic, width=230)
 
 with col2:
     st.title(NAME)
@@ -197,17 +210,22 @@ with col2:
 with st.container():
     selected = option_menu(
         menu_title = None,
-        options = ['About' , 'Generative A.I. and Data Projects', 'Contact me'],
+        options = ['About' , 'Generative A.I. Projects', 'Contact me'],
         #add these names from https://icons.getbootstrap.com    
         icons = ['person', 'code-slash', 'chat-left-text-fill'], 
-        orientation = 'horizontal'
+        orientation = 'horizontal',
+        styles={
+        "container": {"padding": "0!important"}
+        }
     )
     
 if selected == 'About':
     with st.container():
         col01, col02 = st.columns(2)
         with col01:
-            st.subheader("PROFESSIONAL EXPERIENCE")
+            #st.subheader("Professional experience:")
+            st.markdown("<h3 style='text-align: left'>Professional experience:</h3>", unsafe_allow_html=True)
+            
 
 # --- ZOOM experiwnce            
     with st.container(border=True):
@@ -219,41 +237,53 @@ if selected == 'About':
                     zoom_logo_pic = Image.open(zoom_logo)
                     st.image(zoom_logo_pic,width=60)
                 with col1002:
-                    st.subheader("Zoom Video communication, CA")
+                    #st.subheader("Zoom Video communication, CA")
+                    st.markdown("<h4 style='text-align: left'>Zoom Video communication, CA</h4>", unsafe_allow_html=True)
                 
-            #st.write("##")
-            #st.image(zoom_logo)
-            st.subheader("Technical project manager")
-            st.write("""
-                     Led cross-functional e-commerce projects, prioritizing revenue initiatives from concept to launch, and secured a rapid promotion within a year for exceptional performance and impactful contributions. Led diverse product growth strategies, incentivizing free users on both mobile and desktop platforms, and collaborated with the data engineering team to ensure thorough data tracking in Snowplow for analysis.
-                     """)
+            st.markdown("<h5 style='text-align: left'>Sr. Technical project manager</h5>", unsafe_allow_html=True)
+            st.markdown("""
+                        <ul><li> • <small>Managed several end-to-end cross-functional projects for eCommerce marketing online revenue growth.</small></li><li> • <small>Achieved rapid promotion within 1  year due to exceptional performance and impactful contributions</small></li><li> • <small>Recognized with awards like "Dream Team" and "All In One" Award by the GM during All Hands meetings.</small></li><li> • <small>Led 8-10 projects/Qtr & managed big teams of 10-15 engineers addressing  all blockers & launch. </small></li></ul>""",
+                        unsafe_allow_html=True)
+                        
         with col2:
             st_lottie(lottie_coder , height=200)
-            #st.markdown("<h1 style='text-align: center'>SSep 2021 – PRESENT</h1>", unsafe_allow_html=True)
-            st.write("Sep 2021 – PRESENT")
-
+            st.markdown("<h6 style='text-align: center'>Sep 2021 – PRESENT</h6>", unsafe_allow_html=True)
         
-        expander = st.expander(" Project Details ")
+        expander = st.expander( " :small_red_triangle_down: **⚙️ Project Details** ")
         
         with expander:
-            st.write(" ### :large_green_circle: Free user monetization projects: ### ")
-            st.write("  ####  :arrow_right: Introduce forced break between meetings #### ")
-            st.write(" - ► Implemented forced breaks between consecutive Zoom meetings to counter users exploiting the 40-minute limit, creating opportunities for monetization among free users.")
-            st.write(" - ► Conducted cross-functional meetings with teams in strategy, finance, revenue, legal, and marketing, addressing the impact of changes and exploring strategies for user upgrades, including coupon incentives.")
-            st.write(" - ► Led project kick-off meetings involving mobile, desktop, and web engineering, ensuring seamless collaboration and Agile implementation. Worked with the data team to integrate analytics and enhance visibility through Tableau dashboards.")
-            st.write(" - ► Spearheaded a revenue-driving project, resulting in a significant $500k MRR growth.")
-            st.write(" #### :arrow_right: Reducing time limit of 1:1 free meetings #### ")
-            st.write("""
-                     - ► Implemented a uniform 40-minute meeting duration limit for all Basic (free) users, focusing on 1:1 meetings to streamline and enhance user experience.
-                     - ► Led cross-functional discussions and project kick-off meetings, involving teams in strategy, finance, revenue, legal, marketing, mobile, desktop, web engineering, and QA. This initiative contributed significantly to a $500,000 increase in Monthly Recurring Revenue (MRR).
-                     """
-                     )
+            st.write("")
+            st.markdown("<h6 style='text-align: left; color: #7CE0E9'> ● Key Initiative - Forced Break 40 min for free sequential meeting (Free user monetization) </h6>", unsafe_allow_html=True)
+            st.markdown(""" <ul><li> 
+                         • <small>Managed global program to  limit users have  1:1 meetings reducing duration & restricted back to back  meetings (Impact : Drove massive revenue growth for Zoom in FY23 ~$2M).</small></li><li>
+                         • <small>Collaborated with 7-8 technical teams and non technical (Product,Finance, revenue, sales, legal, marketing) leading to successful implementation.</small></li><li>
+                         • <small>Led 10-15 Engineers and QA team in the development and launch.</small></li><li>
+                         • <small>Led project planning & execution across infrastructure,  mobile, desktop, and web.</small></li><li>
+                         • <small>Conducted A/B testing for 5 min and 10 min break control variant before 5 weeks of the roll out.</small></li><li>
+                         • <small>Partnered w/ data team to integrate analytics and measure via Tableau dashboards. </small></li></ul>""",
+                        unsafe_allow_html=True)
             
-            st.write(" ### :large_green_circle: Audience segmentation, Data science project ### ")
-            st.write(" - ► Collaborated with Data Engineering to integrate diverse data sources, ensuring comprehensive demographic, behavioral, psychographic, and usage data in Snowflake, later processing it in Databricks.")
-            st.write(" - ► Participated in discussions for Exploratory Data Analysis (EDA) and Feature Engineering, utilizing the k-means algorithm with the Elbow method to identify potential customer segments: Champions, Dormant, and At Risk.")
-            st.write(" - ► Socialized segment data with product teams, making predictive data accessible on web and client platforms for targeted customer engagement.")
-            
+            st.markdown("<h6 style='text-align: left; color: #7CE0E9'> ● Key Initiative - Data Science & Engineering (Audience segmentation ~$3M expected revenue) </h6>", unsafe_allow_html=True)
+            st.markdown(""" <ul><li> 
+                         • <small>Collaborated 6 product teams  & data science to enable data tracking in Snowplow telemetry.</small></li><li>
+                         • <small>Led projects with Data Engineering to merge diverse data sources for comprehensive demographic, behavioral, psychographic, and usage data in Snowflake, processed in Databricks.</small></li><li>
+                         • <small>Engaged in discussions for Exploratory Data Analysis (EDA) and Feature Engineering, utilizing the k-means algorithm with the Elbow method to identify customer segments: Champions, Dormant, and At Risk.</small></li><li>
+                         • <small>Collaborated with 5 Product Eng teams to share data that will help in enabling targeted customer engagement through predictive data on web and client platforms. </small></li></ul>""",
+                        unsafe_allow_html=True)
+
+            st.markdown("<h5 style='text-align: left; color: #7CE0E9'>  ● Responsibilities and tasks </h5> ", unsafe_allow_html=True)
+            st.markdown(""" <ul><li>
+                        ●  Adopted  Agile, Scrum and Waterfall approaches using tools like JIRA, Asana MS Project, Custom template</li><li>
+                        ●  Led  In App Purchase programs  for improving checkout of  Zoom products on Apple and Android devices</li><li>
+                        ●  Managed NPI enablement  of Zoom Products for Online customers like Zoom Phone, Home Destination</li><li>
+                        ●  Managed project plan for  Zoom AI Companion that uses  natural language processing (NLP), machine learning, and voice recognition technology to understand meetings and convert into meeting summaries</small></li><li>
+                        ●  Led project related to cloud recording enforcing limits for online customers (Impact $296K MRR) partnering with infrastructure teams</li><li>
+                        ●  Led projects related to in product growth marketing to increase sign up on Client & Web and Free Sign-Up Optimizations (Impact 500K MRR) partnering with Marketing & Retention Product Management </li><li>
+                        ●  Managed projects related to Mobile & desktop client for showing pre & post meeting dialogues to Online customers for driving retention promotions for Online marketing increasing free to paid conversions </li></ul>""" ,
+                        unsafe_allow_html=True)
+
+
+    
     st.write('\n\n\n\n')              
 
 # --- Cisco Zensar experiwnce    
@@ -269,86 +299,86 @@ if selected == 'About':
                     cisco_logo_pic = Image.open(cisco_logo)
                     st.image(cisco_logo_pic,width=70)                
                 with col003:
-                    st.subheader("Zensar Technologies/Cisco Systems, CA")
+                    #st.subheader("Zensar Technologies/Cisco Systems, CA") 
+                    st.markdown("<h4 style='text-align: top'>Zensar Technologies - Client : Cisco Systems</h4>", unsafe_allow_html=True)
+
                 
             #st.write("##")
             #st.image(zoom_logo)
-            st.subheader("Technical project manager")
-            st.write("""
-                     As a Technical Project Manager, led the System Recommendation project for Cisco employees, overseeing the implementation of a machine learning engine. Collaborated globally, engaged in strategic planning, and optimized recommendation accuracy through proficiency in Python and Big Data tools, contributing to Learning Management System migrations. Spearheaded. containerization and migration of The Multiplier Effect to AWS, managing cost, budget, AWS setup, configuring components, and implementing CI/CD pipelines for Docker containers, with a focus on containerizing the Drupal Web App on a PHP+Apache image..
-                     """)
+            #st.subheader("Technical project manager")
+            st.markdown("<h5 style='text-align: left'>Technical project manager</h5>", unsafe_allow_html=True)
+            st.markdown("""
+                     <small>As a Technical Project Manager, led the System Recommendation project for Cisco employees, overseeing the implementation of a machine learning engine. Collaborated globally, engaged in strategic planning, and optimized recommendation accuracy through proficiency in Python and Big Data tools, contributing to Learning Management System migrations. Spearheaded. containerization and migration of The Multiplier Effect to AWS, managing cost, budget, AWS setup, configuring components, and implementing CI/CD pipelines for Docker containers, with a focus on containerizing the Drupal Web App on a PHP+Apache image.</small> """,
+                     unsafe_allow_html=True)
+                     
         with col2:
             st_lottie(tpm_lottie_animation  , height=200)
             #st.markdown("<h1 style='text-align: center'>SSep 2021 – PRESENT</h1>", unsafe_allow_html=True)
-            st.write("May 2014 – Sep 2021")
+            st.markdown("<h6 style='text-align: center'>May 2014 – Sep 2021</h6>", unsafe_allow_html=True)
+            #st.write("May 2014 – Sep 2021")
 
-        expander = st.expander(" Project Details ")
-        
-        
+        expander = st.expander("  :small_red_triangle_down: **⚙️ Project Details**  ")
         with expander:
-            #st.write(" ### :large_green_circle: Free user monetization projects: ### ")
-            st.write("  ####  :arrow_right: The Multiplier Effect (https://www.multiplydiversity.com/)  #### ")
-            st.write(" - ► Led a cross-functional team in containerizing and migrating an application to AWS for the Multiplier Effect project, managing cost, budget, and AWS account setup. Configured various AWS components(EC2, VPC, S3, ELB, CloudFront, IAM, RDS, CloudWatch, EKS, ECR) and managed Docker containers, implementing CI/CD pipelines for deploying images and focusing on containerizing the Drupal Web App on a PHP+Apache image.")
+            st.write('\n\n\n\n')    
+            zencol01,zencol02 = st.columns([5,5])
+            with zencol01:
+                st.markdown("<h5 style='text-align: left'> <u>Technical project manager </u></h5>", unsafe_allow_html=True)
+            with zencol02:
+                st.markdown("<h6 style='text-align: right'>May 2014 – Sep 2021</h6>", unsafe_allow_html=True)
+            st.markdown("<small> Key Initiatives : </small>", unsafe_allow_html=True)
+            
+            st.markdown("<h6 style='text-align: left; color: #7CE0E9'>  ● The Multiplier Effect (https://www.multiplydiversity.com/) </h6> ", unsafe_allow_html=True)
+            st.markdown(""" <ul><li> 
+                        • <small>Led a cross-functional teams to containerizing and migrating inhouse applications to AWS for the Multiplier Effect project, managing cost, budget, and AWS account setup. Configured various AWS components(EC2, VPC, S3, ELB, CloudFront, IAM, RDS, CloudWatch, EKS, ECR) and managed Docker containers, implementing CI/CD pipelines for deploying images and focusing on containerizing the Drupal Web App on a PHP+Apache image.</small></li></ul>
+                        """ , unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #7CE0E9'>  ● Learning system recommendations for Cisco employees </h6> ", unsafe_allow_html=True)
+            st.markdown(""" <ul><li> 
+                        • <small> Led the System Recommendation project as a Technical Project Manager, overseeing the implementation of a machine learning engine for personalized learning recommendations based on diverse attributes.</small></li><li>
+                        • <small> Collaborated with global teams, engaged in strategic planning, architecture design, and hands-on coding, demonstrating proficiency in Python and Big Data tools, and optimized recommendation accuracy through algorithm adjustments and knowledge of Hadoop, Scoop, Hive, Spark, and Solr.</small></li></ul>
+                        """ , unsafe_allow_html=True)
 
-            st.write("  ####  :arrow_right: Learning system recommendations for Cisco employees  #### ")
-            st.write(" - ► Led the System Recommendation project as a Technical Project Manager, overseeing the implementation of a machine learning engine for personalized learning recommendations based on diverse attributes.")
-            st.write(" - ► Collaborated with global teams, engaged in strategic planning, architecture design, and hands-on coding, demonstrating proficiency in Python and Big Data tools, and optimized recommendation accuracy through algorithm adjustments and knowledge of Hadoop, Scoop, Hive, Spark, and Solr.")
+            st.markdown("<h6 style='text-align: left; color: #7CE0E9'>  ● Learning Management System, Content Management System (TeamSIte) migration to new enterprise platform </h56> ", unsafe_allow_html=True)
+            st.markdown(""" <ul><li> 
+                        • <small> Led managed communication and coordination for integrated application teams at Cisco, developing the next-gen UI for the Enterprise Learning site, configuring the Sales Enablement Reach Media platform, and contributing to a multilingual mobile app for partners. Key involvement in enterprise-level application platform migrations.</small></li></ul>
+                        """ , unsafe_allow_html=True)
+            
+            st.write('\n\n\n\n')
+            zencol03,zencol04 = st.columns([5,5])
+            with zencol03:
+                st.markdown("<h5 style='text-align: left'> <u>Software engineer, Senior Technical Lead </u></h5>", unsafe_allow_html=True)
+            with zencol04:
+                st.markdown("<h6 style='text-align: right'> April 2004 – April 2014</h6>", unsafe_allow_html=True)
+                
+            st.markdown(""" <ul><li> 
+                        • <small> Spearheaded client collaboration, roadmap development, and successful project delivery, with a focus on enhancing Enterprise Learning Services, facilitating ERP integration for cost savings, implementing Mobile Transformation, and actively engaging in agile development and continuous delivery, along with framework enhancements, search engine integrations, and seamless application integrations using Web Service Gateways.</small></li></ul>
+                        """ , unsafe_allow_html=True)
 
-            st.write("  ####  :arrow_right: Learning Management System, Content Management System (TeamSIte) migration to new enterprise platform #### ")
-            st.write(" - ► Led communication and coordination for integrated application teams at Cisco, developing the next-gen UI for the Enterprise Learning site, configuring the Sales Enablement Reach Media platform, and contributing to a multilingual mobile app for partners. Key involvement in enterprise-level application platform migrations..")
 
-    st.write('\n\n\n\n')              
-    
-# --- ZOOM experiwnce prioer to 2014
+    st.write('\n\n\n\n')  
+
     with st.container(border=True):
-        col1, col2 = st.columns([7,3])
+        col1, col2 = st.columns([7,3],gap="small")
         with col1:
             with st.container():
-                col001, col002, col003 = st.columns([1,1,9], gap="small")
+                col001, col1002 = st.columns([1,18])
                 with col001:
-                    zensar_logo_pic = Image.open(zensar_logo)
-                    st.image(zensar_logo_pic,width=85)
-                with col002:
-                    cisco_logo_pic = Image.open(cisco_logo)
-                    st.image(cisco_logo_pic,width=70)                
-                with col003:
-                    st.subheader("Zensar Technologies/Cisco Systems, CA")
+                    web_logo_pic = Image.open(web_logo)
+                    st.image(web_logo_pic,width=60)
+                with col1002:
+                    #st.subheader("Zoom Video communication, CA")
+                    st.markdown("<h4 style='text-align: left'>Employer: ETH/Dishnet DSL, Pune India</h4>", unsafe_allow_html=True)
                 
-            #st.write("##")
-            #st.image(zoom_logo)
-            st.subheader("Software engineer, Senior Technical Lead")
-            st.write("""
-                     As a Senior Tech Lead, spearheaded client collaboration, roadmap development, and successful project delivery, with a focus on enhancing Enterprise Learning Services, facilitating ERP integration for cost savings, implementing Mobile Transformation, and actively engaging in agile development and continuous delivery, along with framework enhancements, search engine integrations, and seamless application integrations using Web Service Gateways..
-                     """)
+            st.markdown("<h6 style='text-align: left'>Java/ J2EE Sr. Developer</h6>", unsafe_allow_html=True)
+            st.markdown(""" <ul><li> 
+                        • <small>As As a Java Developer, I utilized multithreading and Socket programming to design a chat server, incorporating Visual Basic for the user interface on the client side and Java for server-side operations. </small></li><li>
+                        • <small> I had the privilege of working with Dr. Vijay Bhatkar, the CEO of Dishnet, and showcasing learning applications/projects to </small> <b> India's President, Dr. APJ Abdul Kalam </b>. </li></ul>""",
+                        unsafe_allow_html=True)
+                        
         with col2:
-            st_lottie(coder1_lottie_animation , height=200)
-            #st.markdown("<h1 style='text-align: center'>SSep 2021 – PRESENT</h1>", unsafe_allow_html=True)
-            st.write("2004 – April 2014")
-
-
-# --- ZOOM experiwnce prioer to 2004
-    with st.container(border=True):
-        col1, col2 = st.columns([7,3])
-        with col1:
-            with st.container():
-                col202, col203 = st.columns([1,9], gap="small")
-                with col202:
-                    #cisco_logo_pic = Image.open(cisco_logo)
-                    #st.image(cisco_logo_pic,width=70)
-                    st.write(" :globe_with_meridians: ")
-                with col203:
-                    st.subheader("ETH/Dishnet DSL, Pune India")
-                
-            #st.write("##")
-            #st.image(zoom_logo)
-            st.subheader("Java/ J2EE Sr. Developer")
-            st.write("""
-                     As a Java Developer, implemented multithreading and Socket programming to craft a chat server with a Visual Basic client-side interface, collaborated with Dr. Vijay Bhatkar, CEO of Dishnet, and presented learning applications to India's President, *Dr. APJ Abdul Kalam*.
-                     """)
-        with col2:
-            st_lottie(db_animation , height=200)
-            #st.markdown("<h1 style='text-align: center'>SSep 2021 – PRESENT</h1>", unsafe_allow_html=True)
-            st.write("Prier experience and achievements")
+             st_lottie(coder1_lottie_animation , height=200)
+             #st.markdown("<h1 style='text-align: center'>SSep 2021 – PRESENT</h1>", unsafe_allow_html=True)
+             st.write("Prier experience and achievements")
+            
 
 # --- Certificatiion
     with st.container():
@@ -360,42 +390,35 @@ if selected == 'About':
         cert_col1, cert_col2 = st.columns([1,18])
         with cert_col1:
             aws_logo_pic = Image.open(aws_logo)
-            st.image(aws_logo_pic,width=60)
+            st.image(aws_logo_pic,width=40)
         with cert_col2:
-            st.subheader("AWS Certified Solutions Architect – Associate")
+            st.markdown("<h6 style='text-align: left'>AWS Certified Solutions Architect – Associate</h6>", unsafe_allow_html=True)
+            #st.subheader("AWS Certified Solutions Architect – Associate")
 
         cert_col1, cert_col2 = st.columns([1,18])
         with cert_col1:
             aws_logo_pic = Image.open(aws_logo)
-            st.image(aws_logo_pic,width=60)
+            st.image(aws_logo_pic,width=40)
         with cert_col2:
-            st.subheader("AWS Certified Cloud Practitioner")
+            #st.subheader("AWS Certified Cloud Practitioner")
+            st.markdown("<h6 style='text-align: left'>AWS Certified Cloud Practitioner</h6>", unsafe_allow_html=True)
 
         cert_col1, cert_col2 = st.columns([1,18])
         with cert_col1:
             google_logo_pic = Image.open(google_logo)
-            st.image(google_logo_pic,width=60)
+            st.image(google_logo_pic,width=30)
         with cert_col2:
-            st.subheader("Introduction to Generative AI")
+            #st.subheader("Introduction to Generative AI")
+            st.markdown("<h6 style='text-align: left'>Introduction to Generative AI</h6>", unsafe_allow_html=True)
 
         cert_col1, cert_col2 = st.columns([1,18])
         with cert_col1:
             scrum_alliance_logo_pic = Image.open(scrum_alliance_logo)
-            st.image(scrum_alliance_logo_pic,width=60)
+            st.image(scrum_alliance_logo_pic,width=30)
         with cert_col2:
-            st.subheader("Certified Scrum Master (SCM)")
+            #st.subheader("Certified Scrum Master (SCM)")
+            st.markdown("<h6 style='text-align: left'>Certified Scrum Master (SCM)</h6>", unsafe_allow_html=True)
 
-
-
-#scrum_alliance_logo
-#aws_logo
-#google_logo
-#pune_university_logo
-
-        #st.write("""
-        #    - Master of Computer Management (MCM) - Savitribai Phule Pune University
-        #    - Diploma in Computer Management (DCM) - Savitribai Phule Pune University
-        #    """)
 
 # --- Education
     with st.container():
@@ -408,30 +431,82 @@ if selected == 'About':
         edu_col1, edu_col2 = st.columns([1,18])
         with edu_col1:
             pune_university_logo_pic = Image.open(pune_university_logo)
-            st.image(pune_university_logo_pic,width=45)
+            st.image(pune_university_logo_pic,width=35)
         with edu_col2:
             st.write("Master of Computer Management (MCM) - Savitribai Phule Pune University")
         cert_col1, cert_col2 = st.columns([1,18])
         with edu_col1:
             #aws_logo_pic = Image.open(aws_logo)
-            st.image(pune_university_logo_pic,width=45)
+            st.image(pune_university_logo_pic,width=35)
         with edu_col2:
             st.write('\n')
             st.write("Diploma in Computer Management (DCM) - Savitribai Phule Pune University")                          
                          
 
-if selected == "Generative A.I. and Data Projects":
+if selected == "Generative A.I. Projects":
     with st.container():
         #st.subheader("Projects worked on to learn latest technologies like Generative AI")
-        st.markdown(" **Engaged in projects aimed at acquiring proficiency in cutting-edge technologies such as Generative AI.** ")
-        st.write("   :blue[ **1) Generate Multiple choice quiz from given file content or text** ]  ")  
-        multi = ''' :blue[ **Technologies and Tools:** ] OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.  
-        :blue[ **How it works:** ] Upload a .pdf or .txt file from MCQ quiz is to be generated, provide number of questions, Subject and complexity level like Simple Medium Complex. Download .csv file.
+        st.markdown(" **These projects aimed at acquiring proficiency in cutting-edge technologies such as Generative AI.** ")
+        
+        st.write("  :blue[ **1) Generate blog for given subject or profession** ]  ")  
+        multi = ''' :blue[ **Technologies and Tools:** ] <small>OpenAI LLM, LLAMA, DALL-E-3,LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.</small>  
+        :blue[ **How it works:** ] <small>Provide blog Topic, lengt of the Blog and for what profession user want to create a blog .</small>
         '''
-        st.markdown(multi)
-        #st.markdown(" **1) Generate Multiple choice quiz from given file content or text** ")
-        #st.markdown(" **Technologies and Tools:** OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront")
-        #st.markdown(" **How it works:** Upload a .pdf or .txt file from MCQ quiz is to be generated, provide *umber questions, Subject and complexity level like Simple Medium Complex. Download .csv file")
+        st.markdown(multi, unsafe_allow_html=True)
+
+        #Create a form using st.form 
+        form1 = st.form("Blog form")        
+        
+        with form1:
+            ## creating to more columns for additonal 2 fields
+            input_text=st.text_input("Enter the Blog Topic")
+            col1,col2=st.columns([5,5])
+            with col1:
+                no_words=st.text_input('No of Words')
+            with col2:
+                blog_style=st.selectbox('Writing the blog for',
+                                    ('Researchers','Data Scientist','Common People', 'Teachers', 'Economists'),index=0)
+            form1_submit=st.form_submit_button(" Generate a Blog")
+        
+        if form1_submit:
+            if input_text and no_words and blog_style:
+                #st.write("Conditions are satisfied, calling OpenAI")
+                print(input_text,no_words,blog_style)
+                blog_response = getBLOGLLamaresponse(input_text,no_words,blog_style)
+                blog_image_url = getBlogImage(input_text)
+
+                blog_col1,blog_col2=st.columns([5,5])
+                with blog_col1:
+                    st.write("")
+                    st.write("")
+                    st.subheader(input_text)
+                with blog_col2:
+                    if blog_image_url:
+                        #blog_image = Image.open(blog_image_url)
+                        st.image(blog_image_url, width=500)
+                    else:
+                        st.write("")
+                
+                st.write(blog_response)
+                
+            else:
+                st.write("Please provide all the values")
+
+
+#====Second project of Blog generation        
+    with st.container():
+        #st.subheader("Projects worked on to learn latest technologies like Generative AI")
+        #st.markdown(" **Engaged in projects aimed at acquiring proficiency in cutting-edge technologies such as Generative AI.** ")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.divider()
+        
+        st.write("   :blue[ **2) Generate Multiple choice quiz from given file content or text** ]  ")  
+        multi = ''' :blue[ **Technologies and Tools:** ] <small>OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.</small>  
+        :blue[ **How it works:** ] <small>Upload a .pdf or .txt file from MCQ quiz is to be generated, provide number of questions, Subject and complexity level like Simple Medium Complex. Download .csv file.</small>
+        '''
+        st.markdown(multi, unsafe_allow_html=True)
         
         #Create a form using st.form 
         form = st.form ("Basic form")
@@ -442,8 +517,6 @@ if selected == "Generative A.I. and Data Projects":
                 #uploaded_file = form.file_uploader("upload .txt or .pdf file")
                 uploaded_file = st.file_uploader("Upload .pdf or .txt")
             with col2:
-                #mcq_count = form.number_input("No, of MCQs", min_value = 1 , max_value = 5)
-                #mcq_count = st.number_input("No, of MCQs", min_value = 1 , max_value = 3)
                 mcq_count = st.number_input("No, of MCQs", 1 , 3)
             with col3:
                 subject = st.text_input("Subject", max_chars =20)
@@ -496,82 +569,7 @@ if selected == "Generative A.I. and Data Projects":
 
             else:
                 st.write("Please provide all the values")
-
-#====Second project of Blog generation        
-    with st.container():
-        #st.subheader("Projects worked on to learn latest technologies like Generative AI")
-        #st.markdown(" **Engaged in projects aimed at acquiring proficiency in cutting-edge technologies such as Generative AI.** ")
-        st.write("")
-        st.write("")
-        st.write("")
-        st.divider()
-        st.write("  :blue[ **2) Generate blog for given subject or profession** ]  ")  
-        multi = ''' :blue[ **Technologies and Tools:** ] OpenAI LLM, LLAMA, DALL-E-3,LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.  
-        :blue[ **How it works:** ] Provide blog Topic, lengt of the Blog and for what profession user want to create a blog .
-        '''
-        st.markdown(multi)
-        #st.markdown(" **1) Generate Multiple choice quiz from given file content or text** ")
-        #st.markdown(" **Technologies and Tools:** OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront")
-        #st.markdown(" **How it works:** Upload a .pdf or .txt file from MCQ quiz is to be generated, provide *umber questions, Subject and complexity level like Simple Medium Complex. Download .csv file")
         
-        #Create a form using st.form 
-        form1 = st.form("Blog form")        
-        
-        with form1:
-            ## creating to more columns for additonal 2 fields
-            input_text=st.text_input("Enter the Blog Topic")
-            col1,col2=st.columns([5,5])
-            with col1:
-                no_words=st.text_input('No of Words')
-            with col2:
-                blog_style=st.selectbox('Writing the blog for',
-                                    ('Researchers','Data Scientist','Common People', 'Teachers', 'Economists'),index=0)
-            form1_submit=st.form_submit_button(" Generate a Blog")
-        
-        if form1_submit:
-            if input_text and no_words and blog_style:
-                #st.write("Conditions are satisfied, calling OpenAI")
-                print(input_text,no_words,blog_style)
-                blog_response = getBLOGLLamaresponse(input_text,no_words,blog_style)
-                blog_image_url = getBlogImage(input_text)
-
-                blog_col1,blog_col2=st.columns([5,5])
-                with blog_col1:
-                    st.write("")
-                    st.write("")
-                    st.subheader(input_text)
-                with blog_col2:
-                    if blog_image_url:
-                        #blog_image = Image.open(blog_image_url)
-                        st.image(blog_image_url, width=500)
-                    else:
-                        st.write("")
-                
-                st.write(blog_response)
-                
-            else:
-                st.write("Please provide all the values")
-
-        
-
-
-
-        #st.write("##")
-        #col5, col6 = st.columns((1,2))
-        #with col5:
-        #    st.image(genAI_image)
-        #with col6:
-        #    st.subheader("Generative A.I. projects ")
-        #    st.markdown("[Visit Github page](https://github.com/bibhishank)")
-            
-        #    st.markdown("[![Title](https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg)](https://github.com/bibhishank)")
-    #with st.container():
-        # Or use `os.getenv('GOOGLE_API_KEY')` to fetch an environment variable.
-        #GOOGLE_API_KEY=userdata.get('GOOGLE_API_KEY')
-        #genai.configure(api_key=GOOGLE_API_KEY)
-        
-        
-    
             
 if selected == "Contact me":
     st.subheader("Reach out to me")
