@@ -215,7 +215,9 @@ with st.container():
         icons = ['person', 'code-slash', 'chat-left-text-fill'], 
         orientation = 'horizontal',
         styles={
-        "container": {"padding": "0!important"}
+        #"container": {"padding": "0px", "margin":"0px", "width":"0px"}
+        #"container": {"padding": "0px", "overflow": "auto",    "width":"100%", "border": "3px solid green;"}
+        #"container": {"width":"100%"}
         }
     )
     
