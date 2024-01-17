@@ -255,7 +255,7 @@ if selected == 'About':
         
         with expander:
             st.write("")
-            st.markdown("<h6 style='text-align: left; color: #7CE0E9'> ● Key Initiative - Forced Break 40 min for free sequential meeting (Free user monetization) </h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'> ● Key Initiative - Forced Break 40 min for free sequential meeting (Free user monetization) </h6>", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
                          • <small>Managed global program to  limit users have  1:1 meetings reducing duration & restricted back to back  meetings (Impact : Drove massive revenue growth for Zoom in FY23 ~$2M).</small></li><li>
                          • <small>Collaborated with 7-8 technical teams and non technical (Product,Finance, revenue, sales, legal, marketing) leading to successful implementation.</small></li><li>
@@ -265,7 +265,7 @@ if selected == 'About':
                          • <small>Partnered w/ data team to integrate analytics and measure via Tableau dashboards. </small></li></ul>""",
                         unsafe_allow_html=True)
             
-            st.markdown("<h6 style='text-align: left; color: #7CE0E9'> ● Key Initiative - Data Science & Engineering (Audience segmentation ~$3M expected revenue) </h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'> ● Key Initiative - Data Science & Engineering (Audience segmentation ~$3M expected revenue) </h6>", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
                          • <small>Collaborated 6 product teams  & data science to enable data tracking in Snowplow telemetry.</small></li><li>
                          • <small>Led projects with Data Engineering to merge diverse data sources for comprehensive demographic, behavioral, psychographic, and usage data in Snowflake, processed in Databricks.</small></li><li>
@@ -273,7 +273,7 @@ if selected == 'About':
                          • <small>Collaborated with 5 Product Eng teams to share data that will help in enabling targeted customer engagement through predictive data on web and client platforms. </small></li></ul>""",
                         unsafe_allow_html=True)
 
-            st.markdown("<h5 style='text-align: left; color: #7CE0E9'>  ● Responsibilities and tasks </h5> ", unsafe_allow_html=True)
+            st.markdown("<h5 style='text-align: left; color: #00E1FF'>  ● Responsibilities and tasks </h5> ", unsafe_allow_html=True)
             st.markdown(""" <ul><li>
                         ●  Adopted  Agile, Scrum and Waterfall approaches using tools like JIRA, Asana MS Project, Custom template</li><li>
                         ●  Led  In App Purchase programs  for improving checkout of  Zoom products on Apple and Android devices</li><li>
@@ -329,17 +329,17 @@ if selected == 'About':
                 st.markdown("<h6 style='text-align: right'>May 2014 – Sep 2021</h6>", unsafe_allow_html=True)
             st.markdown("<small> Key Initiatives : </small>", unsafe_allow_html=True)
             
-            st.markdown("<h6 style='text-align: left; color: #7CE0E9'>  ● The Multiplier Effect (https://www.multiplydiversity.com/) </h6> ", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'>  ● The Multiplier Effect (https://www.multiplydiversity.com/) </h6> ", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
                         • <small>Led a cross-functional teams to containerizing and migrating inhouse applications to AWS for the Multiplier Effect project, managing cost, budget, and AWS account setup. Configured various AWS components(EC2, VPC, S3, ELB, CloudFront, IAM, RDS, CloudWatch, EKS, ECR) and managed Docker containers, implementing CI/CD pipelines for deploying images and focusing on containerizing the Drupal Web App on a PHP+Apache image.</small></li></ul>
                         """ , unsafe_allow_html=True)
-            st.markdown("<h6 style='text-align: left; color: #7CE0E9'>  ● Learning system recommendations for Cisco employees </h6> ", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'>  ● Learning system recommendations for Cisco employees </h6> ", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
                         • <small> Led the System Recommendation project as a Technical Project Manager, overseeing the implementation of a machine learning engine for personalized learning recommendations based on diverse attributes.</small></li><li>
                         • <small> Collaborated with global teams, engaged in strategic planning, architecture design, and hands-on coding, demonstrating proficiency in Python and Big Data tools, and optimized recommendation accuracy through algorithm adjustments and knowledge of Hadoop, Scoop, Hive, Spark, and Solr.</small></li></ul>
                         """ , unsafe_allow_html=True)
 
-            st.markdown("<h6 style='text-align: left; color: #7CE0E9'>  ● Learning Management System, Content Management System (TeamSIte) migration to new enterprise platform </h56> ", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'>  ● Learning Management System, Content Management System (TeamSIte) migration to new enterprise platform </h56> ", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
                         • <small> Led managed communication and coordination for integrated application teams at Cisco, developing the next-gen UI for the Enterprise Learning site, configuring the Sales Enablement Reach Media platform, and contributing to a multilingual mobile app for partners. Key involvement in enterprise-level application platform migrations.</small></li></ul>
                         """ , unsafe_allow_html=True)
@@ -468,12 +468,24 @@ if selected == "Generative A.I. Projects":
             with col2:
                 blog_style=st.selectbox('Writing the blog for',
                                     ('Researchers','Data Scientist','Common People', 'Teachers', 'Economists'),index=0)
-            form1_submit=st.form_submit_button(" Generate a Blog")
+            
+            button_col1, button_col2=st.columns([1,5], gap="small")
+            with button_col1:
+                form1_submit=st.form_submit_button(" Generate a Blog")
+            
+            with button_col2:
+                message_container = st.container(border=False)
+                with message_container:
+                    #form_text = st.markdown("<b>Please provide all the values</b>", unsafe_allow_html=True)
+                    form_text = st.markdown("", unsafe_allow_html=True)
+                #message_container.write("Init")
+                            
+            #form_text.text("Second")
         
         if form1_submit:
             if input_text and no_words and blog_style:
-                #st.write("Conditions are satisfied, calling OpenAI")
-                print(input_text,no_words,blog_style)
+                #print(input_text,no_words,blog_style)
+                form_text.markdown("<h6 style='text-align: left; color: #00E1FF'> <b>Generating blog and image, please wait...</b></h6>", unsafe_allow_html=True)
                 blog_response = getBLOGLLamaresponse(input_text,no_words,blog_style)
                 blog_image_url = getBlogImage(input_text)
 
@@ -490,9 +502,35 @@ if selected == "Generative A.I. Projects":
                         st.write("")
                 
                 st.write(blog_response)
+                form_text.markdown(" :point_down: Here is blog and related image, generated by OpenAI and DALL-E.", unsafe_allow_html=True)
+                #form_text.toast("Here is blog and related image, generated by OpenAI and DALL-E.")
                 
             else:
-                st.write("Please provide all the values")
+                #st.write("<p id='p1'>Please provide all the values</p>", unsafe_allow_html=True)
+                # dynamic_message = """
+                #     <script>
+                #     changeText("Please provide all the values");
+                #     </script> """
+                # st.markdown(dynamic_message, unsafe_allow_html=True)
+                #button_col2.text("Please provide all the values")
+                #button_col2.empty()
+                #message_container.empty()
+                #message_container.text("Please provide all the values")
+                #form1.toast("toast")
+                form_text.markdown("<h8 style='text-align: left; color: red'> Please provide all the values </h8>" , unsafe_allow_html=True)
+                #form_text.toast("Please provide all the values")
+                      
+                                
+
+
+#script
+# import streamlit.components.v1 as components
+# a = """
+# <script> function changeText(value) { document.getElementById('my_para').innerHTML = "You clicked me using button titled " + value; } </script>
+# <input type="button" value="Click Me!" id="my_btn" onclick="changeText(this.value);"/>
+# <p id="my_para">Hello word</p>
+# """
+# components.html(a,height=800,width=1200)
 
 
 #====Second project of Blog generation        
@@ -522,6 +560,7 @@ if selected == "Generative A.I. Projects":
                 mcq_count = st.number_input("No, of MCQs", 1 , 3)
             with col3:
                 subject = st.text_input("Subject", max_chars =20)
+                
             with col4:
                 #tone = st.text_input("Complexity", max_chars=20, placeholder="Simple")
                 tone = st.selectbox('Complexity',('Simple', 'Medium', 'Complex'))

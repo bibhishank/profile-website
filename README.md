@@ -7,8 +7,6 @@
 #### The website features projects from my exploration of new technologies, particularly in Generative AI, created with the utilization of the OpenAI API and Google's Bard Gemini API.
 
 
-💡 The website design is inspired by [@Sven-Bo](https://github.com/Sven-Bo) 💡 
-Find his:
 
 repository here: [https://github.com/bibhishank/profile-website](https://github.com/bibhishank/profile-website)
 
