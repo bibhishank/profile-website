@@ -7,17 +7,15 @@ import requests
 from streamlit_lottie import st_lottie
 #import google.generativeai as genai 
 
-
-#Google libraries
-import pathlib
-import textwrap
+#import pathlib
+#import textwrap
 import PyPDF2
 import pandas as pd
 import json
 import ast
-from MCQGenerator import getMCQData 
-from BlogGenerator import getBLOGLLamaresponse
-from GetPexelsImage import getBlogImage
+#from MCQGenerator import getMCQData 
+#from BlogGenerator import getBLOGLLamaresponse
+#from GetPexelsImage import getBlogImage
 
 
 number_of_pages = 0
@@ -62,31 +60,32 @@ def read_file(file):
     else:
         raise Exception(
             "unsupported file format only pdf and text file suppoted")
-    
-def getQuize(file_text, mcq_count, subject, tone):
-    mcq_output = getMCQData(file_text, mcq_count, subject, tone)
-    st.write("Here is quiz  :point_down: ")
-    #print(mcq_output)
-    quiz_table_data = []
-    tmp_dump = ast.literal_eval(mcq_output)
-    #st.write(tmp_dump)
-    json_dump = json.dumps(tmp_dump)
-    #st.write(tmp_dump)
-    json_obj = json.loads(json_dump)
-    #st.write(json_obj)
-    for key, value in json_obj.items():
-        mcq = value["mcq"]
-        #st.write(mcq)
-        options = " | ".join(
-        [
-            f"{option}: {option_value}"
-            for option, option_value in value["options"].items()
-        ]
-        )
-        correct = value["correct"]
-        quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct})
+
+#Below function is commented as Generative AI code is removed    
+# def getQuize(file_text, mcq_count, subject, tone):
+#     mcq_output = getMCQData(file_text, mcq_count, subject, tone)
+#     st.write("Here is quiz  :point_down: ")
+#     #print(mcq_output)
+#     quiz_table_data = []
+#     tmp_dump = ast.literal_eval(mcq_output)
+#     #st.write(tmp_dump)
+#     json_dump = json.dumps(tmp_dump)
+#     #st.write(tmp_dump)
+#     json_obj = json.loads(json_dump)
+#     #st.write(json_obj)
+#     for key, value in json_obj.items():
+#         mcq = value["mcq"]
+#         #st.write(mcq)
+#         options = " | ".join(
+#         [
+#             f"{option}: {option_value}"
+#             for option, option_value in value["options"].items()
+#         ]
+#         )
+#         correct = value["correct"]
+#         quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct})
         
-    st.write(pd.DataFrame(quiz_table_data))
+#     st.write(pd.DataFrame(quiz_table_data))
     
 
 # --- PATH SETTINGS ---
