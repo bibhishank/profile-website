@@ -91,7 +91,7 @@ def load_lottieurl(url):
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 css_file = current_dir / "styles" / "main.css"
 local_css = current_dir / "styles" / "style.css"
-resume_file = current_dir / "assets" / "Bibhishan_Resume.pdf"
+resume_file = current_dir / "assets" / "Bibhishan_Karadkar_Resume.pdf"
 profile_pic = current_dir / "assets" / "bibhishan-pic.png"
 architecture_image = current_dir / "assets" / "001-validate-generative-ai-outputs-especially-for-higher-stakes-cases.png"
 zoom_logo = current_dir / "assets" / "zoom-png.png"
