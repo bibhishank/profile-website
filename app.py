@@ -5,15 +5,12 @@ from PIL import Image
 from streamlit_option_menu import option_menu
 import requests
 from streamlit_lottie import st_lottie
-import google.generativeai as genai
+#import google.generativeai as genai 
 
 
 #Google libraries
 import pathlib
 import textwrap
-import google.generativeai as genai
-
-
 import PyPDF2
 import pandas as pd
 import json
@@ -127,9 +124,14 @@ PAGE_TITLE = "About | Bibhishan Karadkar"
 PAGE_ICON = ":large_green_circle:"    # :wave:"    #:technologist"
 NAME = "Bibhishan Karadkar"
 ROLE = "Sr. Technical Project Manager"
+
+#DESCRIPTION = """
+#Experienced Sr. technical project manager with a proven track record of delivering business value. Skilled in working collaboratively with multiple teams like  engineering, product, infrastructure, data. Successfully  implemented multiple cross-functional programs over the past 9+ years highlighting a consistent ability to lead and execute initiatives that involve coordination across various departments.
+#"""
 DESCRIPTION = """
-Experienced Sr. technical project manager with a proven track record of delivering business value. Skilled in working collaboratively with multiple teams like  engineering, product, infrastructure, data. Successfully  implemented multiple cross-functional programs over the past 9+ years highlighting a consistent ability to lead and execute initiatives that involve coordination across various departments.
+<small>Accomplished Sr. Technical Project Manager with 9+ years experience and additional software engineering expertise, leveraging tools, partnerships and technology to deliver business value. Demonstrates success identifying new technologies and opportunities to develop solutions that drive revenue, efficiency, and productivity. Strong reputation for building collaborative relationships with cross-functional teams (engineering, product, infrastructure, data) across multiple time zones (China, India, U.S.), effectively leading and executing initiatives.</small>
 """
+
 EMAIL = "bibhishan_k@yahoo.com"
 SOCIAL_MEDIA = {
     #"YouTube": "https://youtube.com/c/codingisfun",
@@ -137,7 +139,6 @@ SOCIAL_MEDIA = {
     "GitHub": "https://github.com/bibhishank/profile-website/tree/main",
     #"Profile": "https://twitter.com",
 }
-
 
 PROJECTS = {
 }
@@ -157,6 +158,36 @@ st.markdown("""
 </style>
 """,unsafe_allow_html=True)
 
+
+#TODO: Move this Utils.py
+st.markdown("""
+    <style>
+    
+           /* Remove blank space at top and bottom */ 
+           .block-container {
+               padding-top: 0rem;
+               padding-bottom: 0rem;
+            }
+           
+           /* Remove blank space at the center canvas */ 
+           .st-emotion-cache-z5fcl4 {
+               position: relative;
+               top: -20px;
+               }
+           
+           /* Make the toolbar transparent and the content below it clickable */ 
+           .st-emotion-cache-18ni7ap {
+               pointer-events: none;
+               background: rgb(255 255 255 / 0%)
+               }
+           .st-emotion-cache-zq5wmm {
+               pointer-events: auto;
+               background: rgb(255 255 255);
+               border-radius: 5px;
+               }
+            
+    </style>
+    """, unsafe_allow_html=True)
 
 # --- LOAD CSS, PDF & PROFIL PIC ---
 with open(css_file) as f:
@@ -184,7 +215,8 @@ with col1:
 with col2:
     st.title(NAME)
     st.subheader(ROLE)
-    st.write(DESCRIPTION)
+    #st.write(DESCRIPTION)
+    st.markdown(DESCRIPTION, unsafe_allow_html=True)
     row1, row2 = st.columns(2, gap="small")
     with row1:
         st.download_button(
@@ -215,6 +247,7 @@ with st.container():
         icons = ['person', 'code-slash', 'chat-left-text-fill'], 
         orientation = 'horizontal',
         styles={
+            "container": { "max-width":"100%"},
         #"container": {"padding": "0px", "margin":"0px", "width":"0px"}
         #"container": {"padding": "0px", "overflow": "auto",    "width":"100%", "border": "3px solid green;"}
         #"container": {"width":"100%"}
@@ -255,7 +288,7 @@ if selected == 'About':
         
         with expander:
             st.write("")
-            st.markdown("<h6 style='text-align: left; color: #00E1FF'> ● Key Initiative - Forced Break 40 min for free sequential meeting (Free user monetization) </h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'> ● Key Initiative 1) Forced Break 40 min for free sequential meeting (Free user monetization) </h6>", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
                          • <small>Managed global program to  limit users have  1:1 meetings reducing duration & restricted back to back  meetings (Impact : Drove massive revenue growth for Zoom in FY23 ~$2M).</small></li><li>
                          • <small>Collaborated with 7-8 technical teams and non technical (Product,Finance, revenue, sales, legal, marketing) leading to successful implementation.</small></li><li>
@@ -265,11 +298,11 @@ if selected == 'About':
                          • <small>Partnered w/ data team to integrate analytics and measure via Tableau dashboards. </small></li></ul>""",
                         unsafe_allow_html=True)
             
-            st.markdown("<h6 style='text-align: left; color: #00E1FF'> ● Key Initiative - Data Science & Engineering (Audience segmentation ~$3M expected revenue) </h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'> ● Key Initiative 2) Data Science & Engineering (Audience segmentation ~$3M expected revenue) </h6>", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
                          • <small>Collaborated 6 product teams  & data science to enable data tracking in Snowplow telemetry.</small></li><li>
                          • <small>Led projects with Data Engineering to merge diverse data sources for comprehensive demographic, behavioral, psychographic, and usage data in Snowflake, processed in Databricks.</small></li><li>
-                         • <small>Engaged in discussions for Exploratory Data Analysis (EDA) and Feature Engineering, utilizing the k-means algorithm with the Elbow method to identify customer segments: Champions, Dormant, and At Risk.</small></li><li>
+                         • <small>Engaged in Exploratory Data Analysis (EDA) discussions and Feature Engineering, utilizing the k-means algorithm with the Elbow method identify # of segments: Champions, Dormant and At Risk.</small></li><li>
                          • <small>Collaborated with 5 Product Eng teams to share data that will help in enabling targeted customer engagement through predictive data on web and client platforms. </small></li></ul>""",
                         unsafe_allow_html=True)
 
@@ -372,14 +405,15 @@ if selected == 'About':
                 
             st.markdown("<h6 style='text-align: left'>Java/ J2EE Sr. Developer</h6>", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
-                        • <small>As As a Java Developer, I utilized multithreading and Socket programming to design a chat server, incorporating Visual Basic for the user interface on the client side and Java for server-side operations. </small></li><li>
+                        • <small>As a Java Developer, I utilized multithreading and Socket programming to design a chat server, incorporating Visual Basic for the user interface on the client side and Java for server-side operations. </small></li><li>
                         • <small> I had the privilege of working with Dr. Vijay Bhatkar, the CEO of Dishnet, and showcasing learning applications/projects to </small> <b> India's President, Dr. APJ Abdul Kalam </b>. </li></ul>""",
                         unsafe_allow_html=True)
                         
         with col2:
              st_lottie(coder1_lottie_animation , height=200)
              #st.markdown("<h1 style='text-align: center'>SSep 2021 – PRESENT</h1>", unsafe_allow_html=True)
-             st.write("Prier experience and achievements")
+             st.markdown("<h6 style='text-align: center'>Prier experience and achievements</h6>", unsafe_allow_html=True)
+             #st.write("Prier experience and achievements")
             
 
 # --- Certificatiion
@@ -446,161 +480,198 @@ if selected == 'About':
                          
 
 if selected == "Generative A.I. Projects":
-    with st.container():
-        st.markdown(" **These projects aimed at acquiring proficiency in cutting-edge technologies such as Generative AI.** ")
-        
-        st.write("  :blue[ **1) Generate blog and image for given subject or profession** ]  ")  
-        multi = ''' :blue[ **Technologies and Tools:** ] <small>OpenAI LLM, LLAMA, DALL-E-3,LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.</small>  
-        :blue[ **How it works:** ] <small>Provide blog Topic, lengt of the Blog and for what profession user want to generate a blog and image.</small>
-        '''
-        st.markdown(multi, unsafe_allow_html=True)
 
-        #Create a form using st.form 
-        form1 = st.form("Blog form")        
+    with st.container():
         
-        with form1:
-            ## creating to more columns for additonal 2 fields
-            input_text=st.text_input("Enter the Blog Topic")
-            col1,col2=st.columns([5,5])
-            with col1:
-                no_words=st.text_input('No of Words')
-            with col2:
-                blog_style=st.selectbox('Writing the blog for',
-                                    ('Researchers','Data Scientist','Common People', 'Teachers', 'Economists'),index=0)
+        
+        genai_col1, genai_col2, genai_col3 = st.columns([1,8,1], gap="small")
+        with genai_col2:
+            st.subheader("My work in Generative AI")
+            st.markdown(""" Constructed website(<a href='https://www.interviewhelperai.com' target='_blank'> https://www.interviewhelperai.com </a>)  to help people who are in process of finding a Job  
+                        <p style='font-size:100%;'><b>LLM’s:</b> <small> OpenAI, Gemini Pro, Llama-2 </small> </p>
+                        <p style='font-size:100%;'><b>Tools/technics:</b> <small> Langchain, Prompt Engineering, Google OAuth, Firebase </small> </p>
+                        """ ,unsafe_allow_html = True)
+            st.markdown(f"""<p style='font-size:75%;'>  Mission of the website is to empower users worldwide with personalized and effective interview preparation assistance leveraging cutting-edge AI technology. 
+                    We aim to provide a comprehensive platform where users can access tailored resources, including mock interviews, expert feedback, and personalized coaching, to enhance their interview skills and confidence. 
+                    Our goal is to democratize access to high-quality interview preparation support, 
+                    regardless of background or experience, ultimately helping users secure their dream jobs and advance their careers.</p>""" ,unsafe_allow_html = True)
+        
+            VIDEO_URL = "https://www.youtube.com/watch?v=dSdOddlGPOA"
+            st.video(VIDEO_URL)
+#     with st.container():
+#         
+        
+#         st.write("  :blue[ **1) Generate blog and image for given subject or profession** ]  ")  
+#         multi = ''' :blue[ **Technologies and Tools:** ] <small>OpenAI LLM, LLAMA, DALL-E-3,LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.</small>  
+#         :blue[ **How it works:** ] <small>Provide blog Topic, lengt of the Blog and for what profession user want to generate a blog and image.</small>
+#         '''
+#         st.markdown(multi, unsafe_allow_html=True)
+
+#         #Create a form using st.form 
+#         form1 = st.form("Blog form")        
+        
+#         with form1:
+#             ## creating to more columns for additonal 2 fields
+#             input_text=st.text_input("Enter the Blog Topic")
+#             col1,col2=st.columns([5,5])
+#             with col1:
+#                 no_words=st.text_input('No of Words')
+#             with col2:
+#                 blog_style=st.selectbox('Writing the blog for',
+#                                     ('Researchers','Data Scientist','Common People', 'Teachers', 'Economists'),index=0)
             
-            button_col1, button_col2=st.columns([1,5], gap="small")
-            with button_col1:
-                form1_submit=st.form_submit_button(" Generate a Blog")
+#             button_col1, button_col2=st.columns([1,5], gap="small")
+#             with button_col1:
+#                 form1_submit=st.form_submit_button(" Generate a Blog")
             
-            with button_col2:
-                message_container = st.container(border=False)
-                with message_container:
-                    form_text = st.markdown("", unsafe_allow_html=True)
-                #message_container.write("Init")
+#             with button_col2:
+#                 message_container = st.container(border=False)
+#                 with message_container:
+#                     form_text = st.markdown("", unsafe_allow_html=True)
+#                 #message_container.write("Init")
                             
-            #form_text.text("Second")
+#             #form_text.text("Second")
         
-        if form1_submit:
-            if input_text and no_words and blog_style:
-                #print(input_text,no_words,blog_style)
-                form_text.markdown("<h6 style='text-align: left; color: #00E1FF'> <b>Generating blog and image, please wait...</b></h6>", unsafe_allow_html=True)
-                blog_response = getBLOGLLamaresponse(input_text,no_words,blog_style)
-                blog_image_url = getBlogImage(input_text)
+#         if form1_submit:
+#             if input_text and no_words and blog_style:
+#                 #print(input_text,no_words,blog_style)
+#                 form_text.markdown("<h6 style='text-align: left; color: #00E1FF'> <b>Generating blog and image, please wait...</b></h6>", unsafe_allow_html=True)
+#                 blog_response = getBLOGLLamaresponse(input_text,no_words,blog_style)
+#                 blog_image_url = getBlogImage(input_text)
 
-                blog_col1,blog_col2=st.columns([5,5])
-                with blog_col1:
-                    st.write("")
-                    st.write("")
-                    st.subheader(input_text)
-                with blog_col2:
-                    if blog_image_url:
-                        #blog_image = Image.open(blog_image_url)
-                        st.image(blog_image_url, width=500)
-                    else:
-                        st.write("")
+#                 blog_col1,blog_col2=st.columns([5,5])
+#                 with blog_col1:
+#                     st.write("")
+#                     st.write("")
+#                     st.subheader(input_text)
+#                 with blog_col2:
+#                     if blog_image_url:
+#                         #blog_image = Image.open(blog_image_url)
+#                         st.image(blog_image_url, width=500)
+#                     else:
+#                         st.write("")
                 
-                st.write(blog_response)
-                form_text.markdown(" :point_down: Here is blog and related image, generated by OpenAI and DALL-E.", unsafe_allow_html=True)
-                #form_text.toast("Here is blog and related image, generated by OpenAI and DALL-E.")
+#                 st.write(blog_response)
+#                 form_text.markdown(" :point_down: Here is blog and related image, generated by OpenAI and DALL-E.", unsafe_allow_html=True)
+#                 #form_text.toast("Here is blog and related image, generated by OpenAI and DALL-E.")
                 
-            else:
-                form_text.markdown("<h8 style='text-align: left; color: red'> Please provide all the values </h8>" , unsafe_allow_html=True)
-                #form_text.toast("Please provide all the values")
+#             else:
+#                 form_text.markdown("<h8 style='text-align: left; color: red'> Please provide all the values </h8>" , unsafe_allow_html=True)
+#                 #form_text.toast("Please provide all the values")
 
 
-#====Second project of Blog generation        
-    with st.container():
-        st.write("")
-        st.write("")
-        st.write("")
-        st.divider()
+# #====Second project of Blog generation        
+#     with st.container():
+#         st.write("")
+#         st.write("")
+#         st.write("")
+#         st.divider()
         
-        st.write("   :blue[ **2) Generate Multiple choice quiz from given file content or text** ]  ")  
-        multi = ''' :blue[ **Technologies and Tools:** ] <small>OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.</small>  
-        :blue[ **How it works:** ] <small>Upload a .pdf or .txt file from MCQ quiz is to be generated, provide number of questions, Subject and complexity level like Simple Medium Complex. Download .csv file.</small>
-        '''
-        st.markdown(multi, unsafe_allow_html=True)
+#         st.write("   :blue[ **2) Generate Multiple choice quiz from given file content or text** ]  ")  
+#         multi = ''' :blue[ **Technologies and Tools:** ] <small>OpenAI LLM, LangChain, PromptTemplate, Python, Streamlit, GIT, AWS, EC2, CloudFront.</small>  
+#         :blue[ **How it works:** ] <small>Upload a .pdf or .txt file from MCQ quiz is to be generated, provide number of questions, Subject and complexity level like Simple Medium Complex. Download .csv file.</small>
+#         '''
+#         st.markdown(multi, unsafe_allow_html=True)
         
-        #Create a form using st.form 
-        form = st.form ("Basic form")
+#         #Create a form using st.form 
+#         form = st.form ("Basic form")
         
-        with form:
-            col1, col2, col3, col4  =  st.columns([4, 1, 1, 2])
-            with col1:
-                #uploaded_file = form.file_uploader("upload .txt or .pdf file")
-                uploaded_file = st.file_uploader("Upload .pdf or .txt")
-            with col2:
-                mcq_count = st.number_input("No, of MCQs", 1 , 3)
-            with col3:
-                subject = st.text_input("Subject", max_chars =20)
+#         with form:
+#             col1, col2, col3, col4  =  st.columns([4, 1, 1, 2])
+#             with col1:
+#                 #uploaded_file = form.file_uploader("upload .txt or .pdf file")
+#                 uploaded_file = st.file_uploader("Upload .pdf or .txt")
+#             with col2:
+#                 mcq_count = st.number_input("No, of MCQs", 1 , 3)
+#             with col3:
+#                 subject = st.text_input("Subject", max_chars =20)
                 
-            with col4:
-                #tone = st.text_input("Complexity", max_chars=20, placeholder="Simple")
-                tone = st.selectbox('Complexity',('Simple', 'Medium', 'Complex'))
-            #with col5:
-            colbutton1, colbutton2 =  st.columns([1, 1])
-            with colbutton1:
-                #st.write("")
-                mcq_txt = st.text_area(
-                    label = "If file is not uploaded add text to generate MCQ",
-                    height = 200,
-                    max_chars = 4000 ,
-                    placeholder = "Text to generate MCQ"
-                    )
-            with colbutton2:
-                st.write("")
-                st.write("")
-                st.write("")
-                submitted = st.form_submit_button(label="Generate MCQ's")
+#             with col4:
+#                 #tone = st.text_input("Complexity", max_chars=20, placeholder="Simple")
+#                 tone = st.selectbox('Complexity',('Simple', 'Medium', 'Complex'))
+#             #with col5:
+#             colbutton1, colbutton2 =  st.columns([1, 1])
+#             with colbutton1:
+#                 #st.write("")
+#                 mcq_txt = st.text_area(
+#                     label = "If file is not uploaded add text to generate MCQ",
+#                     height = 200,
+#                     max_chars = 4000 ,
+#                     placeholder = "Text to generate MCQ"
+#                     )
+#             with colbutton2:
+#                 st.write("")
+#                 st.write("")
+#                 st.write("")
+#                 submitted = st.form_submit_button(label="Generate MCQ's")
 
 
-        #Validation of all the fields
-        if submitted:
-            #initiate_vars()
-            if (uploaded_file is not None or mcq_txt) and mcq_count and subject and tone:        
-            #if uploaded_file is not None and mcq_count and subject and tone:
-                if len(mcq_txt) >= 500:
-                    file_text = mcq_txt
-                    getQuize(file_text, mcq_count, subject, tone)
-                    #st.write("Text size is too short to generate quize, add more content or upload file.")    
-                elif uploaded_file is None and len(mcq_txt) < 500:
-                    st.write("Text size is too short to generate quize, add more content or upload file.")    
-                elif uploaded_file is not None and (len(mcq_txt) < 500 or mcq_txt is None):
-                    file_text = read_file(uploaded_file)
-                    if file_text == "MORE_THAN_FIVE_PAGES":
-                        st.write("PDF file contains more than 5 pages, please upload file with 5 or less pages")
-                    elif file_text == "LESS_TEXT_IN_PDF":
-                        st.write("File has not enough content to generate MCQ, please reupload file with enough content")
-                    elif file_text == "LESS_TEXT_IN_TXT":
-                        st.write("File has not enough content to generate MCQ, please reupload file with enough content")
-                    elif file_text == "MORE_TEXT_IN_TXT":
-                        st.write("File is too large, please reduce text size and reupload file.") 
-                    else:
-                        getQuize(file_text, mcq_count, subject, tone)
-                        #st.write("Conditions are satisfied, calling OpenAI")
-                else:
-                    st.write("Text size is too short to generate quize, add more content or upload file.")
+#         #Validation of all the fields
+#         if submitted:
+#             #initiate_vars()
+#             if (uploaded_file is not None or mcq_txt) and mcq_count and subject and tone:        
+#             #if uploaded_file is not None and mcq_count and subject and tone:
+#                 if len(mcq_txt) >= 500:
+#                     file_text = mcq_txt
+#                     getQuize(file_text, mcq_count, subject, tone)
+#                     #st.write("Text size is too short to generate quize, add more content or upload file.")    
+#                 elif uploaded_file is None and len(mcq_txt) < 500:
+#                     st.write("Text size is too short to generate quize, add more content or upload file.")    
+#                 elif uploaded_file is not None and (len(mcq_txt) < 500 or mcq_txt is None):
+#                     file_text = read_file(uploaded_file)
+#                     if file_text == "MORE_THAN_FIVE_PAGES":
+#                         st.write("PDF file contains more than 5 pages, please upload file with 5 or less pages")
+#                     elif file_text == "LESS_TEXT_IN_PDF":
+#                         st.write("File has not enough content to generate MCQ, please reupload file with enough content")
+#                     elif file_text == "LESS_TEXT_IN_TXT":
+#                         st.write("File has not enough content to generate MCQ, please reupload file with enough content")
+#                     elif file_text == "MORE_TEXT_IN_TXT":
+#                         st.write("File is too large, please reduce text size and reupload file.") 
+#                     else:
+#                         getQuize(file_text, mcq_count, subject, tone)
+#                         #st.write("Conditions are satisfied, calling OpenAI")
+#                 else:
+#                     st.write("Text size is too short to generate quize, add more content or upload file.")
 
-            else:
-                st.write("Please provide all the values")
+#             else:
+#                 st.write("Please provide all the values")
         
             
 if selected == "Contact me":
-    st.subheader("Reach out to me")
-    st.write("##")
+    #contact_me_col1, contact_me_col2, contact_me_col3 = st.columns([1,8,1], gap="small")
+    #with contact_me_col2:
+    #<input type="email" style="background-color: lightblue; border-radius: 2px;" name="email" placeholder = "Your Email" required>
     contact_form = """
     <form action="https://formsubmit.co/bibhishan_k@yahoo.com" method="POST">
-     <input type = "hidden" name = "_captcha" value = "false">
-     <input type="text" name="name" placeholder= "Your Name" required>
-     <input type="email" name="email" placeholder = "Your Email" required>
-     <textarea name="message" placeholder = "Your Message" required></textarea>
-     <button type="submit">Send</button>
-     </form>
+    <input type = "hidden" name = "_captcha" value = "false">
+    <input type="text" style="border-radius: 6px; " name="name" placeholder= "Your Name" required>
+    <input type="email" style="border-radius: 6px; " name="email" placeholder = "Your Email" required>
+    <textarea name="message" style="border-radius: 6px; " placeholder = "Your Message" required></textarea>
+    
+    <style>
+    .contactbutton {
+    background-color: #FF8C02; /* #04AA6D Green */
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    cursor: pointer;
+    }
+    .contactbuttonradius {border-radius: 12px;}
+    </style>
+    <center><button type="submit" class="contactbutton contactbuttonradius">Send</button></center>
+    </form>
     """
             
-    left_col, right_col = st.columns((2,1))
-    with left_col:
+    left_col, middle_col, right_col = st.columns([1,7,2])
+    with middle_col:
+        st.subheader("Reach out to me")
         st.markdown(contact_form, unsafe_allow_html= True )
     with right_col:
         st_lottie(contact_animation, height = 100)
         
+    #<button type="submit">Send</button>
