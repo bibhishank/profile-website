@@ -9,14 +9,13 @@ from streamlit_lottie import st_lottie
 
 #import pathlib
 #import textwrap
-import PyPDF2
-import pandas as pd
-import json
-import ast
+#import PyPDF2
+#import pandas as pd
+#import json
+#import ast
 #from MCQGenerator import getMCQData 
 #from BlogGenerator import getBLOGLLamaresponse
 #from GetPexelsImage import getBlogImage
-
 
 number_of_pages = 0
 text_length_char = 0
@@ -30,36 +29,36 @@ def load_lottieurl(url):
         return None
     return r.json()
         
- 
-def read_file(file):
-    if file.name.endswith(".pdf"):
-        try:
-            pdf_reader = PyPDF2.PdfReader(file)
-            text = ""
-            global number_of_pages
-            number_of_pages = len(pdf_reader.pages)
-            if number_of_pages > 5:
-                return "MORE_THAN_FIVE_PAGES"
-            for page in pdf_reader.pages:
-                text+= page.extract_text()
-            global text_length_char
-            text_length_char = len(text)
-            if text_length_char < 500:
-                return "LESS_TEXT_IN_TXT"
-            if text_length_char > 8000:
-                return "MORE_TEXT_IN_TXT"
-            return text
-        except Exception as e:
-            raise Exception ("error reading the PDF file")
+#Below block is commented as AI features are disabled from the site 
+# def read_file(file):
+#     if file.name.endswith(".pdf"):
+#         try:
+#             pdf_reader = PyPDF2.PdfReader(file)
+#             text = ""
+#             global number_of_pages
+#             number_of_pages = len(pdf_reader.pages)
+#             if number_of_pages > 5:
+#                 return "MORE_THAN_FIVE_PAGES"
+#             for page in pdf_reader.pages:
+#                 text+= page.extract_text()
+#             global text_length_char
+#             text_length_char = len(text)
+#             if text_length_char < 500:
+#                 return "LESS_TEXT_IN_TXT"
+#             if text_length_char > 8000:
+#                 return "MORE_TEXT_IN_TXT"
+#             return text
+#         except Exception as e:
+#             raise Exception ("error reading the PDF file")
 
-    elif file.name.endswith(".txt"):
-        text_file_text = file.read().decode("utf-8")
-        global text_length_char_txt
-        text_length_char_txt =  len(text_file_text) 
-        return text_file_text
-    else:
-        raise Exception(
-            "unsupported file format only pdf and text file suppoted")
+#     elif file.name.endswith(".txt"):
+#         text_file_text = file.read().decode("utf-8")
+#         global text_length_char_txt
+#         text_length_char_txt =  len(text_file_text) 
+#         return text_file_text
+#     else:
+#         raise Exception(
+#             "unsupported file format only pdf and text file suppoted")
 
 #Below function is commented as Generative AI code is removed    
 # def getQuize(file_text, mcq_count, subject, tone):
@@ -92,7 +91,7 @@ def read_file(file):
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 css_file = current_dir / "styles" / "main.css"
 local_css = current_dir / "styles" / "style.css"
-resume_file = current_dir / "assets" / "bibhishan_resume.pdf"
+resume_file = current_dir / "assets" / "Bibhishan_Resume.pdf"
 profile_pic = current_dir / "assets" / "bibhishan-pic.png"
 architecture_image = current_dir / "assets" / "001-validate-generative-ai-outputs-especially-for-higher-stakes-cases.png"
 zoom_logo = current_dir / "assets" / "zoom-png.png"
