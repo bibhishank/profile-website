@@ -121,13 +121,13 @@ genAI_image = Image.open(architecture_image)
 PAGE_TITLE = "About | Bibhishan Karadkar"
 PAGE_ICON = ":large_green_circle:"    # :wave:"    #:technologist"
 NAME = "Bibhishan Karadkar"
-ROLE = "Sr. Technical Project Manager"
+ROLE = "Technical Project Manager"
 
 #DESCRIPTION = """
 #Experienced Sr. technical project manager with a proven track record of delivering business value. Skilled in working collaboratively with multiple teams like  engineering, product, infrastructure, data. Successfully  implemented multiple cross-functional programs over the past 9+ years highlighting a consistent ability to lead and execute initiatives that involve coordination across various departments.
 #"""
 DESCRIPTION = """
-<small>Accomplished Sr. Technical Project Manager with 9+ years experience and additional software engineering expertise, leveraging tools, partnerships and technology to deliver business value. Demonstrates success identifying new technologies and opportunities to develop solutions that drive revenue, efficiency, and productivity. Strong reputation for building collaborative relationships with cross-functional teams (engineering, product, infrastructure, data) across multiple time zones (China, India, U.S.), effectively leading and executing initiatives.</small>
+<small>Accomplished Technical Project Manager with 9+ years experience and additional software engineering expertise, leveraging tools, partnerships and technology to deliver business value. Demonstrates success identifying new technologies and opportunities to develop solutions that drive revenue, efficiency, and productivity. Strong reputation for building collaborative relationships with cross-functional teams (engineering, product, infrastructure, data) across multiple time zones (China, India, U.S.), effectively leading and executing initiatives.</small>
 """
 
 EMAIL = "bibhishan_k@yahoo.com"
@@ -284,7 +284,7 @@ if selected == 'About':
                     #st.subheader("Zoom Video communication, CA")
                     st.markdown("<h4 style='text-align: left'>Zoom Video communication, CA</h4>", unsafe_allow_html=True)
                 
-            st.markdown("<h5 style='text-align: left'>Sr. Technical project manager</h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='text-align: left'> Technical project manager</h5>", unsafe_allow_html=True)
             st.markdown("""
                         <ul><li> • <small>Managed several end-to-end cross-functional projects for eCommerce marketing online revenue growth.</small></li><li> • <small>Achieved rapid promotion within 1  year due to exceptional performance and impactful contributions</small></li><li> • <small>Recognized with awards like "Dream Team" and "All In One" Award by the GM during All Hands meetings.</small></li><li> • <small>Led 8-10 projects/Qtr & managed big teams of 10-15 engineers addressing  all blockers & launch. </small></li></ul>""",
                         unsafe_allow_html=True)
