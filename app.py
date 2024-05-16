@@ -384,7 +384,7 @@ Development of Zoom AI Companion, Leveraging NLP, Machine Learning, and Voice Re
             st.markdown("<h6 style='text-align: center'>See more on Projects below</h6>", unsafe_allow_html=True)
                      
         with col2:
-            st_lottie(tpm_lottie_animation  , height=200)
+            st_lottie(tpm_lottie_animation  , height=170)
             #st.markdown("<h1 style='text-align: center'>SSep 2021 – PRESENT</h1>", unsafe_allow_html=True)
             st.markdown("<h6 style='text-align: center'>May 2014 – Sep 2021</h6>", unsafe_allow_html=True)
             #st.write("May 2014 – Sep 2021")
