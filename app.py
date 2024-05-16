@@ -126,8 +126,12 @@ ROLE = "Technical Project Manager"
 #DESCRIPTION = """
 #Experienced Sr. technical project manager with a proven track record of delivering business value. Skilled in working collaboratively with multiple teams like  engineering, product, infrastructure, data. Successfully  implemented multiple cross-functional programs over the past 9+ years highlighting a consistent ability to lead and execute initiatives that involve coordination across various departments.
 #"""
+#DESCRIPTION = """
+#<small>Accomplished Technical Project Manager with 9+ years experience and additional software engineering expertise, leveraging tools, partnerships and technology to deliver business value. Demonstrates success identifying new technologies and opportunities to develop solutions that drive revenue, efficiency, and productivity. Strong reputation for building collaborative relationships with cross-functional teams (engineering, product, infrastructure, data) across multiple time zones (China, India, U.S.), effectively leading and executing initiatives.</small>
+#"""
+# Changed after got updated resume from Resumable
 DESCRIPTION = """
-<small>Accomplished Technical Project Manager with 9+ years experience and additional software engineering expertise, leveraging tools, partnerships and technology to deliver business value. Demonstrates success identifying new technologies and opportunities to develop solutions that drive revenue, efficiency, and productivity. Strong reputation for building collaborative relationships with cross-functional teams (engineering, product, infrastructure, data) across multiple time zones (China, India, U.S.), effectively leading and executing initiatives.</small>
+<small>Extensive experience collaborating with diverse stakeholders, including management and senior leadership, to define project goals, prioritize tasks, and drive strategic initiatives forward. Skilled in hands-on technical execution, focused on bridging the gap between development teams and project objectives to streamline workflows and optimize resource allocation. Track record of successfully managing multi-shore teams across different time zones (US, China, India). Continuously staying abreast of emerging technologies and industry trends to identify opportunities for innovation and process improvement. Instrumental in conveying technical concepts to non-technical stakeholders and promoting productive relationships across all organizational levels. Known for consistently meeting project milestones and exceeding expectations through meticulous planning, resource management, and risk mitigation strategies.</small>
 """
 
 EMAIL = "bibhishan_k@yahoo.com"
@@ -202,10 +206,13 @@ profile_pic = Image.open(profile_pic)
 
 
 # --- profile SECTION ---
-col1, col2 = st.columns(2, gap="small")
+col1, col2 = st.columns([3,7], gap="small")
 with col1:
     left_co, cent_co,last_co = st.columns(3)
     with cent_co:
+        st.write("")
+        st.write("<br><br>", unsafe_allow_html=True)
+        st.write("")
         st.image(profile_pic, width=230)
     
     #st.image(profile_pic, width=230)
@@ -273,7 +280,7 @@ if selected == 'About':
 
 # --- ZOOM experiwnce            
     with st.container(border=True):
-        col1, col2 = st.columns([7,3],gap="small")
+        col1, col2 = st.columns([8,2],gap="small")
         with col1:
             with st.container():
                 col001, col1002 = st.columns([1,18])
@@ -285,10 +292,30 @@ if selected == 'About':
                     st.markdown("<h4 style='text-align: left'>Zoom Video communication, CA</h4>", unsafe_allow_html=True)
                 
             st.markdown("<h5 style='text-align: left'> Technical project manager</h5>", unsafe_allow_html=True)
+            #st.markdown("""
+            #            <ul><li> • <small>Managed several end-to-end cross-functional projects for eCommerce marketing online revenue growth.</small></li><li> 
+            #            • <small>Achieved rapid promotion within 1  year due to exceptional performance and impactful contributions</small></li><li> 
+            #            • <small>Recognized with awards like "Dream Team" and "All In One" Award by the GM during All Hands meetings.</small></li><li> 
+            #            • <small>Led 8-10 projects/Qtr & managed big teams of 10-15 engineers addressing  all blockers & launch. </small></li></ul>""",
+            #            unsafe_allow_html=True)
+
+            #Changed after got updated resume from Resumable 🔸
             st.markdown("""
-                        <ul><li> • <small>Managed several end-to-end cross-functional projects for eCommerce marketing online revenue growth.</small></li><li> • <small>Achieved rapid promotion within 1  year due to exceptional performance and impactful contributions</small></li><li> • <small>Recognized with awards like "Dream Team" and "All In One" Award by the GM during All Hands meetings.</small></li><li> • <small>Led 8-10 projects/Qtr & managed big teams of 10-15 engineers addressing  all blockers & launch. </small></li></ul>""",
+                        <ul>  <li>  <h6> <b> Led numerous end-to-end cross-functional projects with a special emphasis on driving eCommerce marketing revenue growth. Oversaw 8-10 projects per quarter, managed teams of 10-15 engineers, addressed all obstacles, and ensured successful launches.</b></h6></li>
+                        <li>🔸<small> Facilitated Agile, Scrum adoption, leveraging tools like JIRA across IT and Business teams, to streamline development and prioritization.</small></li>
+                        <li>🔸<small> Enhanced checkout experience for Zoom products on both Apple and Android devices by overseeing In-App Purchase initiatives.</small></li>
+                        <li>🔸<small>Led Strategic Initiatives for Zoom Products, Spearheading the NPI Enablement Strategy for Online Customers and Directing the
+Development of Zoom AI Companion, Leveraging NLP, Machine Learning, and Voice Recognition for Meeting Summaries.</small></li>
+                        <li>🔸<small>Drove project enforcing cloud recording limits, generating $296K MRR impact through collaboration with infrastructure teams.</small></li>
+                        <li>🔸<small>Spearheaded product growth marketing projects which augmented sign-up rates on both Client and Web platforms, while optimizing free sign-up conversions, resulting in a significant impact of $500K in monthly recurring revenue (MRR).</small></li>
+                        <li>🔸<small>Enhanced client experiences, boosting retention and conversion rates with pre and post-meeting dialogues.</small></li>
+                        <li>🔸<small>Skilled at engaging stakeholders across organizational hierarchies, fostering relationships, and resolving conflicts.</small></li>
+                        <li>🔸<small>Acknowledged for exceptional performance, resulting in rapid promotion and prestigious team awards like "Dream Team".</small></li>
+                        </ul>""",
                         unsafe_allow_html=True)
-                        
+                         
+
+
         with col2:
             st_lottie(lottie_coder , height=200)
             st.markdown("<h6 style='text-align: center'>Sep 2021 – PRESENT</h6>", unsafe_allow_html=True)
@@ -297,34 +324,34 @@ if selected == 'About':
         
         with expander:
             st.write("")
-            st.markdown("<h6 style='text-align: left; color: #00E1FF'> ● Key Initiative 1) Forced Break 40 min for free sequential meeting (Free user monetization) </h6>", unsafe_allow_html=True)
+            st.markdown("<h5 style='text-align: left; color: white'>  Key Initiatives/Projects: </h5> ", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'> 1) Introducing Forced Breaks for Free Sequential Meetings(Free User Monetization) </h6>", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
-                         • <small>Managed global program to  limit users have  1:1 meetings reducing duration & restricted back to back  meetings (Impact : Drove massive revenue growth for Zoom in FY23 ~$2M).</small></li><li>
-                         • <small>Collaborated with 7-8 technical teams and non technical (Product,Finance, revenue, sales, legal, marketing) leading to successful implementation.</small></li><li>
-                         • <small>Led 10-15 Engineers and QA team in the development and launch.</small></li><li>
-                         • <small>Led project planning & execution across infrastructure,  mobile, desktop, and web.</small></li><li>
-                         • <small>Conducted A/B testing for 5 min and 10 min break control variant before 5 weeks of the roll out.</small></li><li>
-                         • <small>Partnered w/ data team to integrate analytics and measure via Tableau dashboards. </small></li></ul>""",
+                         • <small>Managed a global program enforcing 40-minute breaks between sequential meetings, curbing back-to-back meetings, and contributing to Zoom's $2M revenue growth in FY23.</small></li><li>
+                         • <small>Partnered with 7-8 technical and non-technical teams, including Product, Finance, Marketing, Revenue, Sales, Legal, Data, Zuora, and Salesforce for successful implementation on platforms like mobile, desktop, and web.</small></li><li>
+                         • <small>Directed project planning and execution across multiple platforms, including infrastructure, mobile, desktop, and web.</small></li><li>
+                         • <small>Conducted A/B testing while comparing variants with 5-minute and 10-minute break durations.</small></li><li>
+                         • <small>Partnered with the data team to integrate analytics and measure the initiative's impact through Tableau dashboards. </small></li></ul>""",
                         unsafe_allow_html=True)
             
-            st.markdown("<h6 style='text-align: left; color: #00E1FF'> ● Key Initiative 2) Data Science & Engineering (Audience segmentation ~$3M expected revenue) </h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'> 2) Audience Segmentation Strategies for Revenue Maximization(Data-Driven Subscription Growth) </h6>", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
-                         • <small>Collaborated 6 product teams  & data science to enable data tracking in Snowplow telemetry.</small></li><li>
-                         • <small>Led projects with Data Engineering to merge diverse data sources for comprehensive demographic, behavioral, psychographic, and usage data in Snowflake, processed in Databricks.</small></li><li>
-                         • <small>Engaged in Exploratory Data Analysis (EDA) discussions and Feature Engineering, utilizing the k-means algorithm with the Elbow method identify # of segments: Champions, Dormant and At Risk.</small></li><li>
-                         • <small>Collaborated with 5 Product Eng teams to share data that will help in enabling targeted customer engagement through predictive data on web and client platforms. </small></li></ul>""",
+                         • <small>Implemented data tracking in Snowplow telemetry in association with six product teams and data science experts.</small></li><li>
+                         • <small>Managed projects with Data Engineering teams to consolidate diverse data sources, aggregating demographic, behavioral, psychographic, and usage data in Snowflake, processed through Databricks.</small></li><li>
+                         • <small>Engaged in discussions on Exploratory Data Analysis (EDA) and Feature Engineering, utilizing the k-means algorithm alongside the Elbow method to identify segments such as Champions, Dormant, and At Risk.</small></li><li>
+                         • <small>Liaised with five Product Engineering teams to share data insights that enabled targeted customer engagement through predictive data on web and client platforms. This project has expected revenue growth of ~3M</small></li></ul>""",
                         unsafe_allow_html=True)
 
-            st.markdown("<h5 style='text-align: left; color: #00E1FF'>  ● Responsibilities and tasks </h5> ", unsafe_allow_html=True)
-            st.markdown(""" <ul><li>
-                        ●  Adopted  Agile, Scrum and Waterfall approaches using tools like JIRA, Asana MS Project, Custom template</li><li>
-                        ●  Led  In App Purchase programs  for improving checkout of  Zoom products on Apple and Android devices</li><li>
-                        ●  Managed NPI enablement  of Zoom Products for Online customers like Zoom Phone, Home Destination</li><li>
-                        ●  Managed project plan for  Zoom AI Companion that uses  natural language processing (NLP), machine learning, and voice recognition technology to understand meetings and convert into meeting summaries</small></li><li>
-                        ●  Led project related to cloud recording enforcing limits for online customers (Impact $296K MRR) partnering with infrastructure teams</li><li>
-                        ●  Led projects related to in product growth marketing to increase sign up on Client & Web and Free Sign-Up Optimizations (Impact 500K MRR) partnering with Marketing & Retention Product Management </li><li>
-                        ●  Managed projects related to Mobile & desktop client for showing pre & post meeting dialogues to Online customers for driving retention promotions for Online marketing increasing free to paid conversions </li></ul>""" ,
-                        unsafe_allow_html=True)
+            #st.markdown("<h5 style='text-align: left; color: #00E1FF'>  ● Responsibilities and tasks </h5> ", unsafe_allow_html=True)
+            # st.markdown(""" <ul><li>
+            #             ●  Adopted  Agile, Scrum and Waterfall approaches using tools like JIRA, Asana MS Project, Custom template</li><li>
+            #             ●  Led  In App Purchase programs  for improving checkout of  Zoom products on Apple and Android devices</li><li>
+            #             ●  Managed NPI enablement  of Zoom Products for Online customers like Zoom Phone, Home Destination</li><li>
+            #             ●  Managed project plan for  Zoom AI Companion that uses  natural language processing (NLP), machine learning, and voice recognition technology to understand meetings and convert into meeting summaries</small></li><li>
+            #             ●  Led project related to cloud recording enforcing limits for online customers (Impact $296K MRR) partnering with infrastructure teams</li><li>
+            #             ●  Led projects related to in product growth marketing to increase sign up on Client & Web and Free Sign-Up Optimizations (Impact 500K MRR) partnering with Marketing & Retention Product Management </li><li>
+            #             ●  Managed projects related to Mobile & desktop client for showing pre & post meeting dialogues to Online customers for driving retention promotions for Online marketing increasing free to paid conversions </li></ul>""" ,
+            #             unsafe_allow_html=True)
 
 
     
@@ -344,7 +371,7 @@ if selected == 'About':
                     st.image(cisco_logo_pic,width=70)                
                 with col003:
                     #st.subheader("Zensar Technologies/Cisco Systems, CA") 
-                    st.markdown("<h4 style='text-align: top'>Zensar Technologies - Client : Cisco Systems</h4>", unsafe_allow_html=True)
+                    st.markdown("<h4 style='text-align: top'>Cisco Systems</h4>", unsafe_allow_html=True)
 
                 
             #st.write("##")
@@ -352,8 +379,9 @@ if selected == 'About':
             #st.subheader("Technical project manager")
             st.markdown("<h5 style='text-align: left'>Technical project manager</h5>", unsafe_allow_html=True)
             st.markdown("""
-                     <small>As a Technical Project Manager, led the System Recommendation project for Cisco employees, overseeing the implementation of a machine learning engine. Collaborated globally, engaged in strategic planning, and optimized recommendation accuracy through proficiency in Python and Big Data tools, contributing to Learning Management System migrations. Spearheaded. containerization and migration of The Multiplier Effect to AWS, managing cost, budget, AWS setup, configuring components, and implementing CI/CD pipelines for Docker containers, with a focus on containerizing the Drupal Web App on a PHP+Apache image.</small> """,
+                     <h6>Spearheaded project planning and scheduling efforts while meticulously crafting timelines, defining scopes, and allocating resources to ensure seamless project execution. Managed risk by identifying potential obstacles, devised mitigation strategies, resolved issues to maintain project momentum, and delivered results within budget/timeline constraints.</h6> """,
                      unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center'>See more on Projects below</h6>", unsafe_allow_html=True)
                      
         with col2:
             st_lottie(tpm_lottie_animation  , height=200)
@@ -369,22 +397,49 @@ if selected == 'About':
                 st.markdown("<h5 style='text-align: left'> <u>Technical project manager </u></h5>", unsafe_allow_html=True)
             with zencol02:
                 st.markdown("<h6 style='text-align: right'>May 2014 – Sep 2021</h6>", unsafe_allow_html=True)
-            st.markdown("<small> Key Initiatives : </small>", unsafe_allow_html=True)
+            #st.markdown("<small> Key Initiatives : </small>", unsafe_allow_html=True)
+            st.markdown("<h5 style='text-align: left; color: white'>  Key Initiatives/Projects: </h5> ", unsafe_allow_html=True)
             
             st.markdown("<h6 style='text-align: left; color: #00E1FF'>  ● The Multiplier Effect (https://www.multiplydiversity.com/) </h6> ", unsafe_allow_html=True)
-            st.markdown(""" <ul><li> 
-                        • <small>Led a cross-functional teams to containerizing and migrating inhouse applications to AWS for the Multiplier Effect project, managing cost, budget, and AWS account setup. Configured various AWS components(EC2, VPC, S3, ELB, CloudFront, IAM, RDS, CloudWatch, EKS, ECR) and managed Docker containers, implementing CI/CD pipelines for deploying images and focusing on containerizing the Drupal Web App on a PHP+Apache image.</small></li></ul>
+            # st.markdown(""" <ul><li> 
+            #             • <small>Led a cross-functional teams to containerizing and migrating inhouse applications to AWS for the Multiplier Effect project, managing cost, budget, and AWS account setup. Configured various AWS components(EC2, VPC, S3, ELB, CloudFront, IAM, RDS, CloudWatch, EKS, ECR) and managed Docker containers, implementing CI/CD pipelines for deploying images and focusing on containerizing the Drupal Web App on a PHP+Apache image.</small></li></ul>
+            #             """ , unsafe_allow_html=True)
+            
+            st.markdown(""" <ul> 
+                        <li>• <small>Steered cross-functional teams with a keen focus on the containerization and migration of in-house applications to AWS for the Multiplier Effect project, ensuring efficient management of costs, budgets, and AWS account setup.</small></li>
+                        <li>• <small>Provisioned and configured various AWS components (EC2, VPC, S3, ELB, CloudFront, IAM, RDS, CloudWatch, EKS, ECR) to facilitate cloud computing, while managing Docker containers.</small></li>
+                        <li>• <small>Implemented CI/CD pipelines to deploy images and focused on containerizing the Drupal Web App using a PHP+Apache image.</small></li>
+                        </ul>
                         """ , unsafe_allow_html=True)
+            
+
             st.markdown("<h6 style='text-align: left; color: #00E1FF'>  ● Learning system recommendations for Cisco employees </h6> ", unsafe_allow_html=True)
-            st.markdown(""" <ul><li> 
-                        • <small> Led the System Recommendation project as a Technical Project Manager, overseeing the implementation of a machine learning engine for personalized learning recommendations based on diverse attributes.</small></li><li>
-                        • <small> Collaborated with global teams, engaged in strategic planning, architecture design, and hands-on coding, demonstrating proficiency in Python and Big Data tools, and optimized recommendation accuracy through algorithm adjustments and knowledge of Hadoop, Scoop, Hive, Spark, and Solr.</small></li></ul>
+            # st.markdown(""" <ul><li> 
+            #             • <small> Led the System Recommendation project as a Technical Project Manager, overseeing the implementation of a machine learning engine for personalized learning recommendations based on diverse attributes.</small></li><li>
+            #             • <small> Collaborated with global teams, engaged in strategic planning, architecture design, and hands-on coding, demonstrating proficiency in Python and Big Data tools, and optimized recommendation accuracy through algorithm adjustments and knowledge of Hadoop, Scoop, Hive, Spark, and Solr.</small></li></ul>
+            #             """ , unsafe_allow_html=True)
+            
+            st.markdown(""" <ul>
+                        <li>• <small>Directed the System Recommendation project as a Technical Project Manager with special emphasis on implementing a
+machine learning engine for personalized learning recommendations based on diverse attributes.</small></li>
+                        <li>• <small>Collaborated with global teams to lead strategic planning, architecture design, and hands-on coding.</small></li>
+                        <li>• <small>Demonstrated proficiency in Python and Big Data tools, optimized recommendation accuracy through algorithm
+adjustments, and utilized Hadoop, Scoop, Hive, Spark, and Solr.</small></li>
+                        </ul>
+                        """ , unsafe_allow_html=True)
+            
+            st.markdown("<h6 style='text-align: left; color: #00E1FF'>  ● Learning Management System, Content Management System (TeamSIte) migration to new enterprise platform </h56> ", unsafe_allow_html=True)
+            # st.markdown(""" <ul><li> 
+            #             • <small> Led managed communication and coordination for integrated application teams at Cisco, developing the next-gen UI for the Enterprise Learning site, configuring the Sales Enablement Reach Media platform, and contributing to a multilingual mobile app for partners. Key involvement in enterprise-level application platform migrations.</small></li></ul>
+            #             """ , unsafe_allow_html=True)
+            st.markdown(""" <ul>
+                        <li>• <small>Managed communication for integrated application teams at Cisco and played a pivotal role in developing the next-gen
+UI for the Enterprise Learning site (https://learn.cisco.com).</small></li>
+                        <li>• <small>Configured the Sales Enablement Reach Media platform and contributed to the development of a multilingual mobile
+app for partners. Played a key role in enterprise-level application platform migrations.</small></li>
+                        </ul>
                         """ , unsafe_allow_html=True)
 
-            st.markdown("<h6 style='text-align: left; color: #00E1FF'>  ● Learning Management System, Content Management System (TeamSIte) migration to new enterprise platform </h56> ", unsafe_allow_html=True)
-            st.markdown(""" <ul><li> 
-                        • <small> Led managed communication and coordination for integrated application teams at Cisco, developing the next-gen UI for the Enterprise Learning site, configuring the Sales Enablement Reach Media platform, and contributing to a multilingual mobile app for partners. Key involvement in enterprise-level application platform migrations.</small></li></ul>
-                        """ , unsafe_allow_html=True)
             
             st.write('\n\n\n\n')
             zencol03,zencol04 = st.columns([5,5])
@@ -410,7 +465,7 @@ if selected == 'About':
                     st.image(web_logo_pic,width=60)
                 with col1002:
                     #st.subheader("Zoom Video communication, CA")
-                    st.markdown("<h4 style='text-align: left'>Employer: ETH/Dishnet DSL, Pune India</h4>", unsafe_allow_html=True)
+                    st.markdown("<h4 style='text-align: left'> ETH/Dishnet DSL, Pune India</h4>", unsafe_allow_html=True)
                 
             st.markdown("<h6 style='text-align: left'>Java/ J2EE Sr. Developer</h6>", unsafe_allow_html=True)
             st.markdown(""" <ul><li> 
