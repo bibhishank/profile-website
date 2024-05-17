@@ -121,7 +121,7 @@ genAI_image = Image.open(architecture_image)
 PAGE_TITLE = "About | Bibhishan Karadkar"
 PAGE_ICON = ":large_green_circle:"    # :wave:"    #:technologist"
 NAME = "Bibhishan Karadkar"
-ROLE = "Technical Project Manager"
+ROLE = "Technical Project & Program Manager"
 
 #DESCRIPTION = """
 #Experienced Sr. technical project manager with a proven track record of delivering business value. Skilled in working collaboratively with multiple teams like  engineering, product, infrastructure, data. Successfully  implemented multiple cross-functional programs over the past 9+ years highlighting a consistent ability to lead and execute initiatives that involve coordination across various departments.
@@ -291,7 +291,7 @@ if selected == 'About':
                     #st.subheader("Zoom Video communication, CA")
                     st.markdown("<h4 style='text-align: left'>Zoom Video communication, CA</h4>", unsafe_allow_html=True)
                 
-            st.markdown("<h5 style='text-align: left'> Technical project manager</h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='text-align: left'> Technical project & Program manager</h5>", unsafe_allow_html=True)
             #st.markdown("""
             #            <ul><li> • <small>Managed several end-to-end cross-functional projects for eCommerce marketing online revenue growth.</small></li><li> 
             #            • <small>Achieved rapid promotion within 1  year due to exceptional performance and impactful contributions</small></li><li> 
